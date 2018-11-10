@@ -9,6 +9,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
+<<<<<<< HEAD
 <BorderPane id="BorderPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <bottom>
     <HBox alignment="TOP_CENTER" prefHeight="114.0" prefWidth="600.0">
@@ -68,4 +69,75 @@
       </children>
     </VBox>
   </top>
+=======
+<BorderPane id="BorderPane" prefHeight="400.0" prefWidth="600.0" 
+            xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+    <bottom>
+        <HBox alignment="TOP_CENTER" prefHeight="114.0" prefWidth="600.0">
+            <children>
+                <Button focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" 
+                        mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" 
+                        text="Delete Account" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" fx:id="x1" />
+                    </font>
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+                    </HBox.margin>
+                </Button>
+                <Button focusTraversable="false" font="$x1" maxHeight="-Infinity" 
+                        maxWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" 
+                        prefWidth="160.0" text="Cancel" textFill="WHITE">
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+    </bottom>
+  
+    <center>
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+            <children>
+                <TextField focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" 
+                           prefHeight="40.0" prefWidth="450.0" promptText="Account Name">
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" fx:id="x2" />
+                    </VBox.margin>
+                </TextField>
+                <HBox alignment="CENTER">
+                    <children>
+                        <Line endX="-12.124073028564453" endY="-0.8945313096046448" startX="-100.0" />
+                        <Text font="$x1" strokeType="OUTSIDE" strokeWidth="0.0" text="or">
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </HBox.margin>
+                        </Text>
+                        <Line endX="-12.124073028564453" endY="-0.8945313096046448" startX="-100.0" />
+                    </children>
+                </HBox>
+                <TextField focusTraversable="false" maxHeight="-Infinity" 
+                           maxWidth="-Infinity" prefHeight="40.0" prefWidth="450.0" 
+                           promptText="User ID">
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </VBox.margin>
+                </TextField>
+            </children>
+        </VBox>
+    </center>
+  
+    <top>
+        <VBox alignment="BOTTOM_CENTER" BorderPane.margin="$x2">
+            <children>
+                <Label text="Delete Account" textFill="GREY" VBox.margin="$x2">
+                    <font>
+                        <Font name="SansSerif Regular" size="25.0" />
+                    </font>
+                </Label>
+                <Separator maxWidth="-Infinity" prefWidth="525.0" style=".separator*.line {&#10;-fx-border-style: solid;&#10;-fx-background-color: #D3D3D3;&#10;}" />
+            </children>
+        </VBox>
+    </top>
+>>>>>>> 580d640da5b00bfddaba46a21f0b569f20fa689f
 </BorderPane>

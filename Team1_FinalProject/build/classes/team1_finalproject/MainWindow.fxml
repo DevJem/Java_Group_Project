@@ -6,6 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<<<<<<< HEAD
 <BorderPane id="BorderPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <bottom>
     <HBox prefHeight="14.0" prefWidth="600.0" />
@@ -73,4 +74,8 @@
       </children>
     </VBox>
   </top>
+=======
+<BorderPane id="BorderPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
+    
+>>>>>>> 580d640da5b00bfddaba46a21f0b569f20fa689f
 </BorderPane>
