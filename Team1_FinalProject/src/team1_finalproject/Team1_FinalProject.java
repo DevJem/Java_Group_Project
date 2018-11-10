@@ -10,11 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-<<<<<<< HEAD
 import team1_finalproject.supporting_classes.DBinterface;
 import team1_finalproject.supporting_classes.PWGenerator;
-=======
->>>>>>> 580d640da5b00bfddaba46a21f0b569f20fa689f
 
 /**
  *
@@ -36,7 +33,6 @@ public class Team1_FinalProject extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-<<<<<<< HEAD
         final int PW_RUNS = 10;
         
         // Connect to the database
@@ -50,14 +46,4 @@ public class Team1_FinalProject extends Application {
         }
         launch(args);
     }
-    
-    /**
-     * Generate password 
-     */
-    
-=======
-        launch(args);
-    }
-    
->>>>>>> 580d640da5b00bfddaba46a21f0b569f20fa689f
 }
