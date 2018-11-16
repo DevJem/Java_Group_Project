@@ -7,30 +7,19 @@ package team1_finalproject;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Font;
+import javafx.event.ActionEvent;
+import javafx.fxml.*;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author Jay
- */
+
 public class SignInController implements Initializable {
 
-    @FXML
-    private Label lblSignIn;
-    @FXML
-    private Button btnUserSignIn;
-    @FXML
-    private Font x1;
-    @FXML
-    private Button btnUserNewAccount;
+    //Variables
     @FXML
     private TextField tfUserEmail;
     @FXML
@@ -43,7 +32,35 @@ public class SignInController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        txtSignInErrorMsg.setVisible(false);
     }    
     
+    //user sign in--check for user credentials in database & access main window OR display error
+    public void CheckCredentials(ActionEvent event) throws Exception{
+        if(tfUserEmail.getText().equals("") && tfUserPassword.getText().equals("")) {
+            //Changes scene to Main Program
+            Parent rootBP = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
+            Scene sceneBP = new Scene(rootBP);
+            
+            Stage wMain = (Stage)((Node)event.getSource()).getScene().getWindow();
+            wMain.setScene(sceneBP);
+            wMain.show();
+        } else {
+            //display error message
+            txtSignInErrorMsg.setVisible(true);
+        }
+    }
+
+
+    @FXML
+    public void LoadNewAccountScene(ActionEvent event) throws Exception{
+        //Changes scene to create account
+        Parent rootBP = FXMLLoader.load(getClass().getResource("CreateAccount.fxml"));
+        Scene sceneBP = new Scene(rootBP);
+        
+        Stage wCreateAccount = (Stage)((Node)event.getSource()).getScene().getWindow();
+        wCreateAccount.setScene(sceneBP);
+        wCreateAccount.show();
+    }
+}
 }
