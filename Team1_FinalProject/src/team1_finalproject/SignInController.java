@@ -36,8 +36,8 @@ public class SignInController implements Initializable {
     }    
     
     //user sign in--check for user credentials in database & access main window OR display error
-    public void CheckCredentials(ActionEvent event) throws Exception{
-        if(tfUserEmail.getText().equals("") && tfUserPassword.getText().equals("")) {
+    public void CheckCredentials(ActionEvent event) throws Exception {
+        if (tfUserEmail.getText().equals("") && tfUserPassword.getText().equals("")) {
             //Changes scene to Main Program
             Parent rootBP = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
             Scene sceneBP = new Scene(rootBP);
@@ -62,5 +62,4 @@ public class SignInController implements Initializable {
         wCreateAccount.setScene(sceneBP);
         wCreateAccount.show();
     }
-}
 }
