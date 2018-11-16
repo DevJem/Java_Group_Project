@@ -7,29 +7,20 @@ package team1_finalproject;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author Jay
- */
+
 public class CreateAccountController implements Initializable {
 
-    @FXML
-    private Label lblCreateAccount;
-    @FXML
-    private Button btnUserCreateAccount;
-    @FXML
-    private Font x1;
-    @FXML
-    private Button btnUserCancel;
     @FXML
     private TextField tfNewUserEmail;
     @FXML
@@ -44,18 +35,20 @@ public class CreateAccountController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+ 
+    //create account
+    public void CreateAccount() {
+        //
+    }
     
-    /**
-     * Method: btnUserCreateAccount
-     *         take input from email, password, and password2
-     *         If passwords match & account doesnt exist, create account
-     *         If false, issue text alert
-     */
-    
-    
-    /**
-     * Method: btnUserCancel
-     *         returns user to login screen
-     */
+    //cancel button
+    public void CancelAccountCreation(ActionEvent event) throws Exception{
+        Parent rootBP = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
+        Scene sceneBP = new Scene(rootBP);
+        
+        Stage wSignIn = (Stage)((Node)event.getSource()).getScene().getWindow();
+        wSignIn.setScene(sceneBP);
+        wSignIn.show();
+    }
     
 }
