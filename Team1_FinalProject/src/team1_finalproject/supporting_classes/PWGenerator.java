@@ -18,7 +18,7 @@ public class PWGenerator {
     private boolean bLowcase = true;    // get from UI
     private boolean bSpecial = true;    // get from UI
     private boolean bNumber = true;     // get from UI
-    private int iLength = 15;            // get from UI
+    private int iLength = 5;            // get from UI
     private String sResult;              // send to UI
     private String sOptions = "";
     private char[] cUpcase = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
@@ -83,9 +83,13 @@ public class PWGenerator {
             boolean bContainsUpcase = false;
             for (int i = 0; i < sResult.length(); i++) {
                 for (int j = 0; j < cUpcase.length; j++) {
-                    if (sResult.charAt(i) == cUpcase[j])
+                    if (sResult.charAt(i) == cUpcase[j]){
                         bContainsUpcase = true;
+                        break;
+                    }
                 }
+                if (bContainsUpcase)
+                    break;
             }
             if (!bContainsUpcase) {
                 System.out.println("Does not contain required complexity.");
@@ -96,9 +100,13 @@ public class PWGenerator {
             boolean bConctainsLowcase = false;
             for (int i = 0; i < sResult.length(); i++) {
                 for (int j = 0; j < cLowcase.length; j++) {
-                    if (sResult.charAt(i) == cLowcase[j])
+                    if (sResult.charAt(i) == cLowcase[j]){
                         bConctainsLowcase = true;
+                        break;
+                    }
                 }
+                if (bConctainsLowcase)
+                    break;
             }
             if (!bConctainsLowcase) {
                 System.out.println("Does not contain required complexity.");
@@ -109,9 +117,13 @@ public class PWGenerator {
             boolean bContainsSpecial = false;
             for (int i = 0; i < sResult.length(); i++) {
                 for (int j = 0; j < cSpecial.length; j++) {
-                    if (sResult.charAt(i) == cSpecial[j])
+                    if (sResult.charAt(i) == cSpecial[j]){
                         bContainsSpecial = true;
+                        break;
+                    }
                 }
+                if (bContainsSpecial)
+                    break;
             }
             if (!bContainsSpecial) {
                 System.out.println("Does not contain required complexity.");
@@ -122,9 +134,13 @@ public class PWGenerator {
             boolean bContainsNumber = false;
             for (int i = 0; i < sResult.length(); i++) {
                 for (int j = 0; j < cNumber.length; j++) {
-                    if (sResult.charAt(i) == cNumber[j])
+                    if (sResult.charAt(i) == cNumber[j]){
                         bContainsNumber = true;
+                        break;
+                    }
                 }
+                if (bContainsNumber)
+                    break;
             }
             if (!bContainsNumber) {
                 System.out.println("Does not contain required complexity.");

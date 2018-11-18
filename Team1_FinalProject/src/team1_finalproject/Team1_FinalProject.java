@@ -10,8 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import team1_finalproject.supporting_classes.DBinterface;
-import team1_finalproject.supporting_classes.PWGenerator;
+import team1_finalproject.supporting_classes.*;
 
 /**
  *
@@ -33,7 +32,7 @@ public class Team1_FinalProject extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        final int PW_RUNS = 10;
+        final int PW_RUNS = 10;  // Number of passwords generated
         
         // Connect to the database
         DBinterface db = new DBinterface();
