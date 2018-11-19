@@ -7,11 +7,13 @@ package team1_finalproject;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
+import javafx.event.ActionEvent;
+import javafx.fxml.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 
 public class MainWindowController implements Initializable {
@@ -28,10 +30,59 @@ public class MainWindowController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //initializes tree view
         treeView();
     }    
    
+     //Handles Button Click: opens up add account window as popup
+    public void addButton(ActionEvent event) throws Exception {
+        Stage stage;
+        Parent rootBP = FXMLLoader.load(getClass().getResource("AddAccount.fxml"));
+        Scene sceneBP = new Scene(rootBP);
+
+        stage = new Stage();
+        stage.setScene(sceneBP);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+    }
+
+    //Handles Button Click: opens up edit account window as popup
+    public void editButton(ActionEvent event) throws Exception {
+        Stage stage;
+        Parent rootBP = FXMLLoader.load(getClass().getResource("EditAccount.fxml"));
+        Scene sceneBP = new Scene(rootBP);
+
+        stage = new Stage();
+        stage.setScene(sceneBP);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+    }
+
+    //Handles Button Click: opens up delete account window as popup
+    public void deleteButton(ActionEvent event) throws Exception {
+        Stage stage;
+        Parent rootBP = FXMLLoader.load(getClass().getResource("DeleteAccount.fxml"));
+        Scene sceneBP = new Scene(rootBP);
+
+        stage = new Stage();
+        stage.setScene(sceneBP);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+    }
+
+    //Handles Button Click: opens up password gen window as popup
+    public void passwordGenerator(ActionEvent event) throws Exception {
+        Stage stage;
+        Parent rootBP = FXMLLoader.load(getClass().getResource("PasswordGenerator.fxml"));
+        Scene sceneBP = new Scene(rootBP);
+
+        stage = new Stage();
+        stage.setScene(sceneBP);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+    }
     
+    //Creates tree view and default elements
     private void treeView() {
         
         TreeItem<String> myPasswords = new TreeItem<>("My Passwords");       
