@@ -1,7 +1,7 @@
 package team1_finalproject.supporting_classes;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import team1_finalproject.Team1_FinalProject;
