@@ -14,15 +14,20 @@ import team1_finalproject.Team1_FinalProject;
 //Begin Subclass DBinterface
 public class DBinterface {
 
-    private static String name = null;
+    private static String sName = null;
+    private static String sPassword = null;
 
     public DBinterface() {
     }
 
     public static void setName(String n) {
-        name = n;
+        sName = n;
     }
 
+    public static void setPassword(String pw) {
+        sPassword = pw;
+    }
+    
     public void connect() {
         int result = 0;
 
@@ -39,24 +44,36 @@ public class DBinterface {
          * database under the current username and, if it's not found, creates
          * one. Assist: https://stackoverflow.com/a/717451/4196281
          */
-        while (result == 0) {
-            try {
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + name, "root", "root");
-                System.out.println("Connected to DB:\t" + name + "\n\n");
-                break;
-            } catch (Exception e) {
-                System.out.println("Not connected to DB yet. Creating DB...\n" + e);
-            }
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + sName, "root", "root");
+            System.out.println("Connected to DB:\t" + sName + "\n\n");
+        } catch (Exception e) {
+            System.out.println(e + "\nNot connected to DB yet. Creating DB...\n");
+            conn = null;
+        }
+        if (conn == null) {
             try {
                 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "root");
                 Statement create = conn.createStatement();
-                result = create.executeUpdate("CREATE DATABASE " + name);
+                result = create.executeUpdate("CREATE DATABASE " + sName);
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + sName, "root", "root");
+                DBCreate newDB = new DBCreate(conn);
+                if (!newDB.buildDB()) {
+                    throw new SQLException();
+                }
+                if (!newDB.addUser(sName, sPassword)) {
+                    throw new SQLException();
+                }
                 System.out.println("Created Database. Green lights!");
+
+                System.out.println(newDB.retrieveUser());
+            } catch (SQLException sqle) {                
+                System.out.println("\nFailed to create DB. Error message:\n" + sqle);
             } catch (Exception e) {
                 System.out.println("\nFailed to create DB. Error message:\n" + e);
             }
         }
-
+        
     }
 
 } // End Subclass DBinterface

@@ -37,10 +37,11 @@ public class SignInController implements Initializable {
     
     //user sign in--check for user credentials in database & access main window OR display error
     public void CheckCredentials(ActionEvent event) throws Exception {
-        if (tfUserEmail.getText().matches("^\\D+$") && tfUserPassword.getText().equals("")) {
+        if (tfUserEmail.getText().matches("^\\D+$") && tfUserPassword.getText().matches("^\\D+$")) {
             
             // send tfUserEmail to DBinterface
             team1_finalproject.supporting_classes.DBinterface.setName(tfUserEmail.getText());
+            team1_finalproject.supporting_classes.DBinterface.setPassword(tfUserPassword.getText());
             
             //Changes scene to Main Program
             Parent rootBP = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
