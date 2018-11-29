@@ -15,7 +15,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import team1_finalproject.supporting_classes.DBinterface;
 
 public class MainWindowController implements Initializable {
 
@@ -44,9 +43,6 @@ public class MainWindowController implements Initializable {
         treeView();
         tableView();
         
-        // Connect to the database
-        DBinterface db = new DBinterface();
-        db.connect();
     }
 
     //Handles Button Click: opens up add account window as popup

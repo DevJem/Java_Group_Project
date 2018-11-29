@@ -85,29 +85,6 @@ public class DBCreate {
         
         return true;
     }
-
-    /**
-     * pull username and password to test database connection.
-     * @return 
-     */
-    String retrieveUser() {
-        String sName = null;
-        String sPassword = null;
-        ResultSet result;
-        String query = "SELECT * FROM User";
-        try {
-            result = stmt.executeQuery(query);
-            while (result.next()) {
-                sName = result.getString("program_username");
-                sPassword = result.getString("program_password");
-            }
-            
-        } catch (SQLException e) {
-            System.out.println("Error getting info:\n" + e);
-        }
-        
-        return "Name is: " + sName + " and password is " + sPassword + "\n";
-    }
     
     
 

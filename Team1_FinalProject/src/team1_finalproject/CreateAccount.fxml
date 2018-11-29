@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane id="BorderPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="team1_finalproject.CreateAccountController">
+<BorderPane id="BorderPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team1_finalproject.CreateAccountController">
   <bottom>
     <VBox alignment="TOP_CENTER" prefHeight="145.0" prefWidth="600.0">
       <children>
-        <Button id="btn" fx:id="btnUserCreateAccount" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Create Account" textFill="WHITE">
+        <Button id="btn" fx:id="btnUserCreateAccount" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#CreateAccount" prefHeight="30.0" prefWidth="150.0" text="Create Account" textFill="WHITE">
           <font>
             <Font size="15.0" fx:id="x1" />
           </font>

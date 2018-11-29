@@ -35,10 +35,10 @@ public class Team1_FinalProject extends Application {
         final int PW_RUNS = 10;  // Number of passwords generated
         
         // PW Generator code. Needs it's own method.
-        PWGenerator pwGenerate = new PWGenerator();
-        for (int i = 0; i < PW_RUNS; i++) {
-            pwGenerate.generate();
-        }
+//        PWGenerator pwGenerate = new PWGenerator();
+//        for (int i = 0; i < PW_RUNS; i++) {
+//            pwGenerate.generate();
+//        }
         launch(args);
     }
 }

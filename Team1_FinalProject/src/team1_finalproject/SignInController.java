@@ -15,7 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
+import team1_finalproject.supporting_classes.*;
 
 public class SignInController implements Initializable {
 
@@ -39,9 +39,24 @@ public class SignInController implements Initializable {
     public void CheckCredentials(ActionEvent event) throws Exception {
         if (tfUserEmail.getText().matches("^\\D+$") && tfUserPassword.getText().matches("^\\D+$")) {
             
-            // send tfUserEmail to DBinterface
-            team1_finalproject.supporting_classes.DBinterface.setName(tfUserEmail.getText());
-            team1_finalproject.supporting_classes.DBinterface.setPassword(tfUserPassword.getText());
+            // Connect to the database
+            DBInterface db = new DBInterface();
+            
+            // send tfUserEmail to DBInterface
+            DBInterface.setName(tfUserEmail.getText());
+            DBInterface.setPassword(tfUserPassword.getText());
+            if (!db.connect()) {
+                System.out.println("Database does not exist.");
+                DBInterface.disconnect();
+                return;
+            }
+            
+            // Verify password
+            if (!DBQueries.checkPW(tfUserPassword.getText())) {
+                System.out.println("Password incorrect");
+                DBInterface.disconnect();
+                return;
+            }
             
             //Changes scene to Main Program
             Parent rootBP = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
