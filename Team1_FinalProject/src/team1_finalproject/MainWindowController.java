@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import team1_finalproject.supporting_classes.DBinterface;
 
 public class MainWindowController implements Initializable {
 
@@ -42,6 +43,10 @@ public class MainWindowController implements Initializable {
         //sets up tree view 
         treeView();
         tableView();
+        
+        // Connect to the database
+        DBinterface db = new DBinterface();
+        db.connect();
     }
 
     //Handles Button Click: opens up add account window as popup
@@ -115,16 +120,16 @@ public class MainWindowController implements Initializable {
 
     //Create table column defaults
     private void tableView() {
-        columnAccount.setCellValueFactory(new PropertyValueFactory
-                <Main_TableAccounts, String>("account"));
-        columnUserID.setCellValueFactory(new PropertyValueFactory
-                <Main_TableAccounts, String>("userID"));
-        columnPassword.setCellValueFactory(new PropertyValueFactory
-                <Main_TableAccounts, String>("password"));
-        columnURL.setCellValueFactory(new PropertyValueFactory
-                <Main_TableAccounts, String>("url"));
-        columnNotes.setCellValueFactory(new PropertyValueFactory
-                <Main_TableAccounts, String>("notes"));
+//        columnAccount.setCellValueFactory(new PropertyValueFactory
+//                <Main_TableAccounts, String>("account"));
+//        columnUserID.setCellValueFactory(new PropertyValueFactory
+//                <Main_TableAccounts, String>("userID"));
+//        columnPassword.setCellValueFactory(new PropertyValueFactory
+//                <Main_TableAccounts, String>("password"));
+//        columnURL.setCellValueFactory(new PropertyValueFactory
+//                <Main_TableAccounts, String>("url"));
+//        columnNotes.setCellValueFactory(new PropertyValueFactory
+//                <Main_TableAccounts, String>("notes"));
         
         //Load data from database
     }

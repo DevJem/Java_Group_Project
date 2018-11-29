@@ -10,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.sql.*;
 import team1_finalproject.supporting_classes.*;
 
 /**
@@ -34,10 +33,6 @@ public class Team1_FinalProject extends Application {
      */
     public static void main(String[] args) {
         final int PW_RUNS = 10;  // Number of passwords generated
-        
-        // Connect to the database
-        DBinterface db = new DBinterface();
-        db.connect();
         
         // PW Generator code. Needs it's own method.
         PWGenerator pwGenerate = new PWGenerator();
