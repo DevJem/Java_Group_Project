@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * @Course: SDEV 450 ~ Java Enterprise
+ * @Author Name: Jenney Chang
+ * @Assignment Name: team1_finalproject
+ * @Description: Controller adds functionality for Main Window Program
  */
 package team1_finalproject;
 
@@ -19,20 +20,14 @@ import javafx.stage.Stage;
 public class MainWindowController implements Initializable {
 
     //Variables
-    @FXML
-    private TreeView<String> treeView;
-    @FXML
-    private TableView<Main_TableAccounts> tableView;
-    @FXML
-    private TableColumn<Main_TableAccounts, String> columnAccount;
-    @FXML
-    private TableColumn<Main_TableAccounts, String> columnUserID;
-    @FXML
-    private TableColumn<Main_TableAccounts, String> columnPassword;
-    @FXML
-    private TableColumn<Main_TableAccounts, String> columnURL;
-    @FXML
-    private TableColumn<Main_TableAccounts, String> columnNotes;
+    @FXML   private TreeView<String> treeView;
+    @FXML   private TableView<Main_TableAccounts> tableView;
+    @FXML   private TableColumn<Main_TableAccounts, String> columnAccount;
+    @FXML   private TableColumn<Main_TableAccounts, String> columnUserID;
+    @FXML   private TableColumn<Main_TableAccounts, String> columnPassword;
+    @FXML   private TableColumn<Main_TableAccounts, LocalDate> columnCreated;
+    @FXML   private TableColumn<Main_TableAccounts, LocalDate> columnModified;    
+    @FXML   private TableColumn<Main_TableAccounts, String> columnNotes;
 
     /**
      * Initializes the controller class.
@@ -93,6 +88,25 @@ public class MainWindowController implements Initializable {
         stage.showAndWait();
     }
 
+    //Menu Item Settings: opens up settings window as popup
+    @FXML
+    public void Settings(ActionEvent event) throws Exception {
+        Stage stage;
+        Parent rootBP = FXMLLoader.load(getClass().getResource("Settings.fxml"));
+        Scene sceneBP = new Scene(rootBP);
+
+        stage = new Stage();
+        stage.setScene(sceneBP);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+    }
+    
+    @FXML
+    //Menu Item Exit: Exits program 
+    public void ExitProgram(ActionEvent event) throws Exception {
+        Platform.exit();
+    }
+    
     //Creates tree view and elements
     private void treeView() {
 
@@ -122,8 +136,9 @@ public class MainWindowController implements Initializable {
 //                <Main_TableAccounts, String>("userID"));
 //        columnPassword.setCellValueFactory(new PropertyValueFactory
 //                <Main_TableAccounts, String>("password"));
-//        columnURL.setCellValueFactory(new PropertyValueFactory
-//                <Main_TableAccounts, String>("url"));
+//                <Main_TableAccounts, LocalDate>("Created"));
+//          columnModified.setCellValueFactory(new PropertyValueFactory
+//                <Main_TableAccounts, LocalDate>("Modified"));
 //        columnNotes.setCellValueFactory(new PropertyValueFactory
 //                <Main_TableAccounts, String>("notes"));
         
