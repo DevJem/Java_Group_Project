@@ -27,11 +27,12 @@ public class Main_TableAccounts {
 
     //Overload Constructor
     public Main_TableAccounts(String account, String userID, String password, 
-            String url, String notes) {
+            LocalDate created, LocalDate modified, String notes) {
         this.account = new SimpleStringProperty(account);
         this.userID = new SimpleStringProperty(userID);
         this.password = new SimpleStringProperty(password);
-        this.url = new SimpleStringProperty(url);
+        this.created = created;
+        this.modified = modified;        
         this.notes = new SimpleStringProperty(notes);
     }
 
@@ -59,13 +60,20 @@ public class Main_TableAccounts {
         this.password = password;
     }
 
-    public String getUrl() {
-        return url.get();
+        public LocalDate getCreated() {
+        return created;
     }
 
-    public void setUrl(SimpleStringProperty url) {
-        this.url = url;
+    public void setCreated(LocalDate created) {
+        this.created = created;
     }
+
+    public LocalDate getModified() {
+        return modified;
+    }
+
+    public void setModified(LocalDate modified) {
+        this.modified = modified;
 
     public String getNotes() {
         return notes.get();
