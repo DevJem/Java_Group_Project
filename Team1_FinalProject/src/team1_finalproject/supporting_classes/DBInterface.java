@@ -1,5 +1,6 @@
 package team1_finalproject.supporting_classes;
 
+//Imports
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,7 +11,6 @@ import team1_finalproject.Team1_FinalProject;
  * @Author Name: Jeremy DeHay
  * @Subclass DBinterface Description:
  */
-//Imports
 //Begin Subclass DBInterface
 public class DBInterface {
 
