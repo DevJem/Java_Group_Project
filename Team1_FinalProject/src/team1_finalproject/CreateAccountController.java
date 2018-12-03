@@ -16,9 +16,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import team1_finalproject.supporting_classes.*;
-
 
 public class CreateAccountController implements Initializable {
 
@@ -28,47 +28,65 @@ public class CreateAccountController implements Initializable {
     private PasswordField tfNewUserPassword;
     @FXML
     private PasswordField tfNewUserPassword2;
+    @FXML
+    private Text txtErrorMsg;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
- 
+        //Initailize Error Message to Invisible
+        txtErrorMsg.setVisible(false);
+    }
+
     //create account
+    @FXML
     public void CreateAccount(ActionEvent event) throws Exception {
+
+        //Check if text fields are empty
+        if (tfNewUserEmail.getText().equals("") || tfNewUserPassword.getText().equals("")
+                || tfNewUserPassword2.getText().equals("")) {
+            txtErrorMsg.setText("Invalid text entry. Please try again.");
+            txtErrorMsg.setVisible(true);
+        }
+        //Check if passwords match
         if (!tfNewUserPassword.getText().equals(tfNewUserPassword2.getText())) {
             System.out.println("Passwords don't match");
-            // TODO: Inform user passwords don't match.
+            //Display Error message
+            txtErrorMsg.setText("Invalid New Password. Please try again.");
+            txtErrorMsg.setVisible(true);
             return;
         }
+
         if (tfNewUserEmail.getText().matches("^\\D+$") && tfNewUserPassword.getText().matches("^\\D+$")) {
-            
+
             // Connect to the database
             DBInterface db = new DBInterface();
-            
+
             // send tfUserEmail to DBInterface
             DBInterface.setName(tfNewUserEmail.getText());
             DBInterface.setPassword(tfNewUserPassword.getText());
             db.createDB();
+            
+            // Change scene after successful account creation
+            Parent rootBP = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
+            Scene sceneBP = new Scene(rootBP);
+
+            Stage wSignIn = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            wSignIn.setScene(sceneBP);
+            wSignIn.show();
         }
-        // Change scene
-        Parent rootBP = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
-        Scene sceneBP = new Scene(rootBP);
-        
-        Stage wSignIn = (Stage)((Node)event.getSource()).getScene().getWindow();
-        wSignIn.setScene(sceneBP);
-        wSignIn.show();
+
     }
-    
+
     //cancel button
-    public void CancelAccountCreation(ActionEvent event) throws Exception{
+    @FXML
+    public void CancelAccountCreation(ActionEvent event) throws Exception {
         Parent rootBP = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
         Scene sceneBP = new Scene(rootBP);
-        
-        Stage wSignIn = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+        Stage wSignIn = (Stage) ((Node) event.getSource()).getScene().getWindow();
         wSignIn.setScene(sceneBP);
         wSignIn.show();
     }
