@@ -78,4 +78,8 @@ public class PasswordGeneratorController implements Initializable {
     public void CheckBox() {
 
     }
+    
+    //TODO interface pwgen here
+    
+    
 }

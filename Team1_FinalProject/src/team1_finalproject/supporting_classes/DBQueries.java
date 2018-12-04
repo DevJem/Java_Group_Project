@@ -46,6 +46,19 @@ public class DBQueries {
         sRequiredPassword = sPassword;      // For pw validation
         return "Name is: " + sName + " and password is " + sPassword + "\n";
     }
+    
+    public void addAccount(String accountName, String username, String password,
+            String notes, int accountType) {
+        //TODO add time cretaed & time modified
+    }
+    
+    public void editAccount(String accountName, String username, String password, String notes, int accountType) {
+        //TODO Edit account using only changed info
+    }
+    
+    public void deleteAccount (String accountName) {
+        //TODO delete account
+    }
 
 } // End Subclass DBQueries
 
