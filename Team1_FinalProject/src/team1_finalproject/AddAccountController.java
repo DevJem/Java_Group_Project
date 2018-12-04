@@ -1,9 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team1_finalproject;
+
+/**
+ * @Course: SDEV 450 ~ Java Enterprise
+ * @Author: Jenney Chang
+ * @Assignment Name: Team1_FinalProject
+ * @Date: Dec 2, 2018
+ * @Subclass AddAccount Controller Description: Adds functionality for elements
+ */
 
 import java.net.URL;
 import java.sql.*;
@@ -14,7 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import team1_finalproject.supporting_classes.DBUtil;
+import team1_finalproject.supporting_classes.DBQueries;
 
 /**
  * FXML Controller class
@@ -31,8 +34,6 @@ public class AddAccountController implements Initializable {
     @FXML
     private PasswordField tfAccountPassword;
     @FXML
-    private ChoiceBox<?> AccountType;
-    @FXML
     private TextArea taAccountNotes;
 
     /**
@@ -40,30 +41,16 @@ public class AddAccountController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //Initialize Choice Box
     }
 
     public void PasswordGeneratorButton() {
 
     }
-
+    //Add Account: calls method to send data to database
+    @FXML
     public void AddAccountButton(ActionEvent even) throws SQLException {
-        addAccountQuery(tfAccountName.getText(), tfAccountUserID.getText(), 
-                tfAccountPassword.getText(), taAccountNotes.getText());
-    }
-
-    //Helper method for Add Account Button
-    //need to resolve password field and time stamp parameters
-    private static void addAccountQuery(String account, String userID, String password, String notes)
-            throws SQLException {
-        String sqlStatement = "INSERT INTO account(account_name, username, password, time_created, "
-                + "time_modified, notes, account_type) values('" + account + "', '" + userID + "',"
-                + "'" + password + "', '" + notes + "')";
-        try {
-            DBUtil.dbExecuteQuery(sqlStatement);
-        } catch (SQLException e) {
-            System.out.println("Error occured while inserting data: " + e);
-        }
+        DBQueries.addAccount(tfAccountName.getText(), tfAccountUserID.getText(),
+                tfAccountPassword.getText(),taAccountNotes.getText());
     }
 
     //Cancel Button closes pop up
