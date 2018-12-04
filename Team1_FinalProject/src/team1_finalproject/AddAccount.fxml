@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="BorderPane" prefHeight="345.0" prefWidth="537.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="BorderPane" prefHeight="320.0" prefWidth="537.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <bottom>
-    <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="580.0">
+    <HBox alignment="TOP_CENTER" prefHeight="77.0" prefWidth="537.0">
       <children>
         <Button fx:id="btnPasswordGenerator" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="152.0" text="Password Generator" textFill="WHITE">
           <font>

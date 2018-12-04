@@ -12,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane id="BorderPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team1_finalproject.DeleteAccountController">
+<BorderPane id="BorderPane" prefHeight="320.0" prefWidth="537.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team1_finalproject.DeleteAccountController">
   <bottom>
-    <HBox alignment="TOP_CENTER" prefHeight="114.0" prefWidth="600.0">
+    <HBox alignment="TOP_CENTER" prefHeight="85.0" prefWidth="537.0">
       <children>
         <Button focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Delete Account" textFill="WHITE">
           <font>
@@ -37,7 +37,7 @@
       <children>
         <TextField focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="450.0" promptText="Account Name">
           <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" fx:id="x2" />
+            <Insets bottom="5.0" left="10.0" right="10.0" top="20.0" fx:id="x2" />
           </VBox.margin>
         </TextField>
         <HBox alignment="CENTER">
@@ -53,7 +53,7 @@
         </HBox>
         <TextField focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="450.0" promptText="User ID">
           <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
           </VBox.margin>
         </TextField>
       </children>
@@ -67,7 +67,7 @@
             <Font name="SansSerif Regular" size="25.0" />
           </font>
         </Label>
-        <Separator maxWidth="-Infinity" prefWidth="525.0" style=".separator*.line {&#10;-fx-border-style: solid;&#10;-fx-background-color: #D3D3D3;&#10;}" />
+        <Separator maxWidth="-Infinity" prefHeight="1.0" prefWidth="503.0" style=".separator*.line {&#10;-fx-border-style: solid;&#10;-fx-background-color: #D3D3D3;&#10;}" />
       </children>
     </VBox>
   </top>
