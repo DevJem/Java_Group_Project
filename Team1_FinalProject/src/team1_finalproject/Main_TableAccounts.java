@@ -21,8 +21,6 @@ public class Main_TableAccounts {
     private LocalDate created;
     private LocalDate modified;
     private SimpleStringProperty notes;
-    private LocalDate created;
-    private LocalDate modified;
 
     //Default constructor
     public Main_TableAccounts() {
@@ -79,11 +77,7 @@ public class Main_TableAccounts {
     public void setModified(LocalDate modified) {
         this.modified = modified;
     }
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> origin/master
     public String getNotes() {
         return notes.get();
     }
