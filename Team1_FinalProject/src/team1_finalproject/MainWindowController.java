@@ -22,7 +22,6 @@ import javafx.stage.Stage;
 public class MainWindowController implements Initializable {
 
     //Variables
-    @FXML   private TreeView<String> treeView;
     @FXML   private TableView<Main_TableAccounts> tableView;
     @FXML   private TableColumn<Main_TableAccounts, String> columnAccount;
     @FXML   private TableColumn<Main_TableAccounts, String> columnUserID;
@@ -37,7 +36,6 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //sets up tree view 
-        treeView();
         tableView();
         
     }
@@ -106,30 +104,9 @@ public class MainWindowController implements Initializable {
     @FXML
     //Menu Item Exit: Exits program 
     public void ExitProgram(ActionEvent event) throws Exception {
-//        Platform.exit();
+        Platform.exit();
     }
     
-    //Creates tree view and elements
-    private void treeView() {
-
-        TreeItem<String> myPasswords = new TreeItem<>("My Passwords");
-        TreeItem<String> social = new TreeItem<>("Social Media");
-        TreeItem<String> email = new TreeItem<>("Email");
-        TreeItem<String> work = new TreeItem<>("Work");
-        TreeItem<String> other = new TreeItem<>("Other");
-        myPasswords.getChildren().addAll(social, email, work, other);
-
-        TreeItem<String> creditCards = new TreeItem("Credit Cards");
-        TreeItem<String> personal = new TreeItem<>("Personal");
-        TreeItem<String> business = new TreeItem<>("Business");
-        creditCards.getChildren().addAll(personal, business);
-
-        TreeItem<String> root = new TreeItem<>();
-        root.getChildren().addAll(myPasswords, creditCards);
-        treeView.setRoot(root);
-        treeView.setShowRoot(false);
-    }
-
     //Create table column defaults
     private void tableView() {
         columnAccount.setCellValueFactory(new PropertyValueFactory<>("account"));
