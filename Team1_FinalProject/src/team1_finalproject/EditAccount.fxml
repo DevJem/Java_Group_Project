@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.collections.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane id="BorderPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="BorderPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <bottom>
     <HBox alignment="TOP_CENTER" prefHeight="110.0" prefWidth="600.0">
       <children>
@@ -39,12 +45,7 @@
               </VBox.margin>
             </TextField>
             <PasswordField fx:id="tfEditAccountPassword" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Password" VBox.margin="$x2" />
-            <TextField fx:id="tfEditAccountURL" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="URL" VBox.margin="$x2" />
-          </children>
-        </VBox>
-        <VBox prefHeight="206.0" prefWidth="250.0">
-          <children>
-            <ChoiceBox fx:id="choicebEditAccountType" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" VBox.margin="$x3">
+            <ChoiceBox fx:id="choicebEditAccountType" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0">
               <items>
                 <FXCollections fx:factory="observableArrayList">
                   <String fx:value="Item 1" />
@@ -52,8 +53,18 @@
                   <String fx:value="Item 3" />
                 </FXCollections>
               </items>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </VBox.margin>
             </ChoiceBox>
-            <TextArea fx:id="taEditAccountNotes" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="140.0" prefWidth="250.0" promptText="Account Notes" wrapText="true" VBox.margin="$x2" />
+          </children>
+        </VBox>
+        <VBox prefHeight="206.0" prefWidth="250.0">
+          <children>
+            <TextArea fx:id="taEditAccountNotes" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="194.0" prefWidth="230.0" promptText="Account Notes" wrapText="true">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" right="10.0" />
+                     </VBox.margin></TextArea>
           </children>
         </VBox>
       </children>
