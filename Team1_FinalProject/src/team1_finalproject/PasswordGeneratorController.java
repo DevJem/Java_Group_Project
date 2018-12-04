@@ -15,6 +15,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -30,17 +31,11 @@ public class PasswordGeneratorController implements Initializable {
     @FXML
     private Label lblPasswordLength;
     @FXML
-    private Font x2;
-    @FXML
     private TextField tfPasswordLength;
     @FXML
     private Label lblCharacterSet;
     @FXML
     private CheckBox cbUpperCase;
-    @FXML
-    private Font x3;
-    @FXML
-    private Insets x4;
     @FXML
     private CheckBox cbLowerCase;
     @FXML
@@ -50,11 +45,19 @@ public class PasswordGeneratorController implements Initializable {
     @FXML
     private CheckBox cbSelectAll;
     @FXML
+    private ListView<?> lvGeneratedPassword;
+    @FXML
+    private Font x2;
+    @FXML
+    private Font x3;
+    @FXML
+    private Insets x4;
+    @FXML
     private Font x1;
     @FXML
-    private Label lblGeneratedPassword;
+    private Button btnCancel;
     @FXML
-    private ListView<?> lvGeneratedPassword;
+    private Label lblGeneratedPassword;
 
     /**
      * Initializes the controller class.
@@ -65,9 +68,11 @@ public class PasswordGeneratorController implements Initializable {
         cbSelectAll.setSelected(true);
     }
 
+    //Handle Button Click: closes popup window
+    @FXML
     public void Cancel(ActionEvent event) throws Exception {
-        Stage addAccount = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        addAccount.close();
+        Stage passwordGen = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        passwordGen.close();
     }
 
     public void CheckBox() {

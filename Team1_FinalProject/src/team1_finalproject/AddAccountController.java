@@ -6,23 +6,15 @@
 package team1_finalproject;
 
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Font;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import team1_finalproject.supporting_classes.DBUtil;
 
 /**
  * FXML Controller class
@@ -33,15 +25,11 @@ public class AddAccountController implements Initializable {
 
     //Variables 
     @FXML
-    private Label lblAddAccount;
-    @FXML
     private TextField tfAccountName;
     @FXML
     private TextField tfAccountUserID;
     @FXML
     private PasswordField tfAccountPassword;
-    @FXML
-    private TextField tfAccountURL;
     @FXML
     private ChoiceBox<?> AccountType;
     @FXML
@@ -52,15 +40,30 @@ public class AddAccountController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        //Initialize Choice Box
     }
 
     public void PasswordGeneratorButton() {
 
     }
 
-    public void AddAccountButton() {
+    public void AddAccountButton(ActionEvent even) throws SQLException {
+        addAccountQuery(tfAccountName.getText(), tfAccountUserID.getText(), 
+                tfAccountPassword.getText(), taAccountNotes.getText());
+    }
 
+    //Helper method for Add Account Button
+    //need to resolve password field and time stamp parameters
+    private static void addAccountQuery(String account, String userID, String password, String notes)
+            throws SQLException {
+        String sqlStatement = "INSERT INTO account(account_name, username, password, time_created, "
+                + "time_modified, notes, account_type) values('" + account + "', '" + userID + "',"
+                + "'" + password + "', '" + notes + "')";
+        try {
+            DBUtil.dbExecuteQuery(sqlStatement);
+        } catch (SQLException e) {
+            System.out.println("Error occured while inserting data: " + e);
+        }
     }
 
     //Cancel Button closes pop up

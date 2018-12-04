@@ -32,13 +32,14 @@ public class SignInController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //set error message to not visible
         txtSignInErrorMsg.setVisible(false);
-    }    
-    
+    }
+
     //user sign in--check for user credentials in database & access main window OR display error
     public void CheckCredentials(ActionEvent event) throws Exception {
+
         if (tfUserEmail.getText().matches("^\\D+$") && tfUserPassword.getText().matches("^\\D+$")) {
-            
             // Connect to the database
             DBInterface db = new DBInterface();
             
@@ -50,19 +51,19 @@ public class SignInController implements Initializable {
                 DBInterface.disconnect();
                 return;
             }
-            
+
             // Verify password
             if (!DBQueries.checkPW(tfUserPassword.getText())) {
                 System.out.println("Password incorrect");
                 DBInterface.disconnect();
                 return;
             }
-            
+
             //Changes scene to Main Program
             Parent rootBP = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
             Scene sceneBP = new Scene(rootBP);
-            
-            Stage wMain = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+            Stage wMain = (Stage) ((Node) event.getSource()).getScene().getWindow();
             wMain.setScene(sceneBP);
             wMain.show();
         } else {
@@ -71,14 +72,13 @@ public class SignInController implements Initializable {
         }
     }
 
-
     @FXML
-    public void LoadNewAccountScene(ActionEvent event) throws Exception{
+    public void LoadNewAccountScene(ActionEvent event) throws Exception {
         //Changes scene to create account
         Parent rootBP = FXMLLoader.load(getClass().getResource("CreateAccount.fxml"));
         Scene sceneBP = new Scene(rootBP);
-        
-        Stage wCreateAccount = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+        Stage wCreateAccount = (Stage) ((Node) event.getSource()).getScene().getWindow();
         wCreateAccount.setScene(sceneBP);
         wCreateAccount.show();
     }

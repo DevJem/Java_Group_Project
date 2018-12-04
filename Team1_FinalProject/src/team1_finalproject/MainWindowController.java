@@ -9,6 +9,7 @@ package team1_finalproject;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Parent;
@@ -131,17 +132,12 @@ public class MainWindowController implements Initializable {
 
     //Create table column defaults
     private void tableView() {
-//        columnAccount.setCellValueFactory(new PropertyValueFactory
-//                <Main_TableAccounts, String>("account"));
-//        columnUserID.setCellValueFactory(new PropertyValueFactory
-//                <Main_TableAccounts, String>("userID"));
-//        columnPassword.setCellValueFactory(new PropertyValueFactory
-//                <Main_TableAccounts, String>("password"));
-//                <Main_TableAccounts, LocalDate>("Created"));
-//          columnModified.setCellValueFactory(new PropertyValueFactory
-//                <Main_TableAccounts, LocalDate>("Modified"));
-//        columnNotes.setCellValueFactory(new PropertyValueFactory
-//                <Main_TableAccounts, String>("notes"));
+        columnAccount.setCellValueFactory(new PropertyValueFactory<>("account"));
+        columnUserID.setCellValueFactory(new PropertyValueFactory<>("userID"));
+        columnPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
+        columnCreated.setCellValueFactory(new PropertyValueFactory<>("Created"));
+        columnModified.setCellValueFactory(new PropertyValueFactory<>("Modified"));
+        columnNotes.setCellValueFactory(new PropertyValueFactory<>("notes"));
         
         //Load data from database
     }

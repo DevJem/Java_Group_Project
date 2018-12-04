@@ -1,29 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team1_finalproject;
 
+/** 
+ * @Course: SDEV 450 ~ Java Enterprise
+ * @Author Name: Jenney Chang
+ * @Assignment Name: team1_finalproject
+ * @Date: December 3, 2018
+ */
+
+//Imports
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
+import javafx.fxml.*;
 import javafx.scene.Node;
-import javafx.scene.text.Font;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author jay
- */
+
 public class DeleteAccountController implements Initializable {
 
     //Variables
-    
+    @FXML
+    private Button btnCancel;
+
 
     /**
      * Initializes the controller class.
@@ -34,7 +33,7 @@ public class DeleteAccountController implements Initializable {
     }
 
     public void Cancel(ActionEvent event) throws Exception {
-        Stage addAccount = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        addAccount.close();
+        Stage deleteAccount = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        deleteAccount.close();
     }
 }
