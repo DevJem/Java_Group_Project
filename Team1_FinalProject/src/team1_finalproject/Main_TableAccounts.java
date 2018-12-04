@@ -8,6 +8,7 @@ package team1_finalproject;
  * @Subclass Main_TableAccounts Description: Holds data for table view
  */
 //Imports
+import java.time.LocalDate;
 import javafx.beans.property.SimpleStringProperty;
 
 //Begin Subclass Main_TableAccounts
@@ -19,6 +20,8 @@ public class Main_TableAccounts {
     private SimpleStringProperty password;
     private SimpleStringProperty url;
     private SimpleStringProperty notes;
+    private LocalDate created;
+    private LocalDate modified;
 
     //Default constructor
     public Main_TableAccounts() {
@@ -74,6 +77,7 @@ public class Main_TableAccounts {
 
     public void setModified(LocalDate modified) {
         this.modified = modified;
+    }
 
     public String getNotes() {
         return notes.get();

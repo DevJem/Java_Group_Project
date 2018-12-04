@@ -7,6 +7,7 @@
 package team1_finalproject;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -104,7 +105,7 @@ public class MainWindowController implements Initializable {
     @FXML
     //Menu Item Exit: Exits program 
     public void ExitProgram(ActionEvent event) throws Exception {
-        Platform.exit();
+//        Platform.exit();
     }
     
     //Creates tree view and elements
