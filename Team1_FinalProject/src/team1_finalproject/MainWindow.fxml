@@ -23,12 +23,12 @@
       <children>
         <TableView fx:id="tableView" focusTraversable="false" HBox.hgrow="ALWAYS">
           <columns>
-            <TableColumn fx:id="columnAccount" prefWidth="103.0" text="Account" />
-            <TableColumn fx:id="columnUserID" maxWidth="5000.0" minWidth="10.0" prefWidth="99.0" text="User ID" />
-            <TableColumn fx:id="columnPassword" maxWidth="5000.0" minWidth="10.0" prefWidth="90.0" sortable="false" text="Password" />
-            <TableColumn fx:id="columnCreated" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="Created" />
-            <TableColumn fx:id="columnModified" prefWidth="74.0" text="Modified" />
-            <TableColumn fx:id="columnNotes" maxWidth="5000.0" minWidth="3.0" prefWidth="130.0" sortable="false" text="Notes" />
+            <TableColumn fx:id="columnAccount" prefWidth="92.0" text="Account" />
+            <TableColumn fx:id="columnUserID" maxWidth="5000.0" minWidth="10.0" prefWidth="94.0" text="User ID" />
+            <TableColumn fx:id="columnPassword" maxWidth="5000.0" minWidth="10.0" prefWidth="114.0" sortable="false" text="Password" />
+            <TableColumn fx:id="columnCreated" maxWidth="5000.0" minWidth="10.0" prefWidth="73.0" text="Created" />
+            <TableColumn fx:id="columnModified" prefWidth="68.0" text="Modified" />
+            <TableColumn fx:id="columnNotes" maxWidth="5000.0" minWidth="3.0" prefWidth="149.0" sortable="false" text="Notes" />
           </columns>
         </TableView>
       </children>

@@ -47,16 +47,13 @@ public class CreateAccountController implements Initializable {
         //Check if text fields are empty
         if (tfNewUserEmail.getText().equals("") || tfNewUserPassword.getText().equals("")
                 || tfNewUserPassword2.getText().equals("")) {
-            txtErrorMsg.setText("Invalid text entry. Please try again.");
-            txtErrorMsg.setVisible(true);
+            errorMessage("Invalid text entry: one or more fields are empty");
         }
         //Check if passwords match
         if (!tfNewUserPassword.getText().equals(tfNewUserPassword2.getText())) {
             System.out.println("Passwords don't match");
             //Display Error message
-            txtErrorMsg.setText("Invalid New Password. Please try again.");
-            txtErrorMsg.setVisible(true);
-            return;
+           errorMessage("Invalid Password: passwords don't match.");
         }
 
         if (tfNewUserEmail.getText().matches("^\\D+$") && tfNewUserPassword.getText().matches("^\\D+$")) {
@@ -79,7 +76,14 @@ public class CreateAccountController implements Initializable {
         }
 
     }
-
+    
+    //Validation method: notifies user of related error
+    @FXML
+    public void errorMessage(String error) {
+        txtErrorMsg.setText(error);
+        txtErrorMsg.setVisible(true);
+    }
+    
     //cancel button
     @FXML
     public void CancelAccountCreation(ActionEvent event) throws Exception {
