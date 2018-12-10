@@ -6,7 +6,6 @@ package team1_finalproject;
  * @Assignment Name: team1_finalproject
  * @Description: Controller adds functionality for Main Window Program
  */
-
 //Imports
 import java.net.URL;
 import java.time.LocalDate;
@@ -26,13 +25,20 @@ import team1_finalproject.supporting_classes.DBQueries;
 public class MainWindowController implements Initializable {
 
     //Variables
-    @FXML   private TableView<Main_TableAccounts> tableView;
-    @FXML   private TableColumn<Main_TableAccounts, String> columnAccount;
-    @FXML   private TableColumn<Main_TableAccounts, String> columnUserID;
-    @FXML   private TableColumn<Main_TableAccounts, String> columnPassword;
-    @FXML   private TableColumn<Main_TableAccounts, LocalDate> columnCreated;
-    @FXML   private TableColumn<Main_TableAccounts, LocalDate> columnModified;    
-    @FXML   private TableColumn<Main_TableAccounts, String> columnNotes;
+    @FXML
+    private TableView<Main_TableAccounts> tableView;
+    @FXML
+    private TableColumn<Main_TableAccounts, String> columnAccount;
+    @FXML
+    private TableColumn<Main_TableAccounts, String> columnUserID;
+    @FXML
+    private TableColumn<Main_TableAccounts, String> columnPassword;
+    @FXML
+    private TableColumn<Main_TableAccounts, LocalDate> columnCreated;
+    @FXML
+    private TableColumn<Main_TableAccounts, LocalDate> columnModified;
+    @FXML
+    private TableColumn<Main_TableAccounts, String> columnNotes;
 
     /**
      * Initializes the controller class.
@@ -46,7 +52,9 @@ public class MainWindowController implements Initializable {
         columnCreated.setCellValueFactory(new PropertyValueFactory<>("Created"));
         columnModified.setCellValueFactory(new PropertyValueFactory<>("Modified"));
         columnNotes.setCellValueFactory(new PropertyValueFactory<>("notes"));
-        
+
+        tableView.setItems(DBQueries.buildTableView());
+
     }
 
     //Handles Button Click: opens up add account window as popup
@@ -109,12 +117,11 @@ public class MainWindowController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
     }
-    
+
     @FXML
     //Menu Item Exit: Exits program 
     public void ExitProgram(ActionEvent event) throws Exception {
         Platform.exit();
     }
-    
 
 }

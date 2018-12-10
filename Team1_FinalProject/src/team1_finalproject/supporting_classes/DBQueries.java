@@ -11,6 +11,9 @@ package team1_finalproject.supporting_classes;
  */
 //Imports
 import java.sql.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import team1_finalproject.Main_TableAccounts;
 
 //Begin Subclass DBQueries
 public class DBQueries {
@@ -167,8 +170,30 @@ public class DBQueries {
         //TODO delete account
     }
     
-    public static void dbLoadData() {
+    public static ObservableList buildTableView() {
+        ObservableList<Main_TableAccounts> data = FXCollections.observableArrayList();
+        String sqlStatement = "select * from Account";
         
+        try {
+            ResultSet rs = stmt.executeQuery(sqlStatement);
+            
+            while (rs.next()) {
+                Main_TableAccounts mta = new Main_TableAccounts();
+                mta.setAccount(rs.getString("account_name"));
+                mta.setUserID(rs.getString("username"));
+                mta.setPassword(rs.getString("password"));
+                mta.setCreated(rs.getTimestamp("time_created"));
+                mta.setModified(rs.getTimestamp("time_modified"));
+                mta.setNotes(rs.getString("notes"));
+                data.add(mta);
+            }
+            stmt.close();
+            rs.close();
+            
+        } catch (SQLException e) {
+            System.out.println("Error occured while loading data: " + e);
+        }
+        return data;
     }
 }
 
