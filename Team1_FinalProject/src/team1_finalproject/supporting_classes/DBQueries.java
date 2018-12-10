@@ -1,7 +1,5 @@
 package team1_finalproject.supporting_classes;
 
-
-
 /**
  * @Course: SDEV 450 ~ Java Programming III - Enterprise Java
  * @Author Name: Jeremy DeHay
@@ -105,22 +103,21 @@ public class DBQueries {
      * @param username
      * @param password
      * @param notes 
+     * @return  
      */
     public static boolean editAccount(String accountName, String username, String password, String notes) {
-        //TODO Edit account using only changed info
-        ResultSet rsAccount;
+        // Edit account using only changed info
+        ResultSet rsEditAccount;
         String sAccount = "";
         try {
             // Get Account name
-            rsAccount = stmt.executeQuery("SELECT * FROM Account WHERE `account_name` = \"" + accountName + "\";");
-            while (rsAccount.next()) {
-                sAccount = rsAccount.getString("account_name");
+            rsEditAccount = stmt.executeQuery("SELECT * FROM Account WHERE `account_name` = \"" + accountName + "\";");
+            while (rsEditAccount.next()) {
+                sAccount = rsEditAccount.getString("account_name");
                 System.out.println("Account is " + sAccount);
             }
+            
             // edit the account
-            
-            
-            
             int currentCount = 0;
             int lastCount = 0;
             String query = "UPDATE `Account` ";
@@ -166,8 +163,27 @@ public class DBQueries {
      * Delete account
      * @param accountName 
      */
-    public static void deleteAccount(String accountName) {
-        //TODO delete account
+    public static boolean deleteAccount(String accountName) {
+        // delete account
+        ResultSet rsDelAccount;
+        String sAccount = "";
+        try {
+            // Get Account name
+            rsDelAccount = stmt.executeQuery("SELECT * FROM Account WHERE `account_name` = \"" + accountName + "\";");
+            while (rsDelAccount.next()) {
+                sAccount = rsDelAccount.getString("account_name");
+                System.out.println("Account is " + sAccount);
+            }
+            
+            // Delete the account
+            String query = "DELETE FROM Account WHERE `account_name` = \"" + accountName + "\";" ;
+            stmt.executeUpdate(query);
+            
+        } catch (SQLException sqle) {
+            System.out.println("Account deletion failed.\n" + sqle);
+            return false;
+        }
+            return true;
     }
     
     public static ObservableList buildTableView() {
@@ -177,17 +193,17 @@ public class DBQueries {
         try {
             ResultSet rs = stmt.executeQuery(sqlStatement);
             
-            while (rs.next()) {
-                Main_TableAccounts mta = new Main_TableAccounts();
-                mta.setAccount(rs.getString("account_name"));
-                mta.setUserID(rs.getString("username"));
-                mta.setPassword(rs.getString("password"));
-                mta.setCreated(rs.getTimestamp("time_created"));
-                mta.setModified(rs.getTimestamp("time_modified"));
-                mta.setNotes(rs.getString("notes"));
-                data.add(mta);
-            }
-            stmt.close();
+//            while (rs.next()) {
+//                Main_TableAccounts mta = new Main_TableAccounts();
+//                mta.setAccount(rs.getString("account_name"));
+//                mta.setUserID(rs.getString("username"));
+//                mta.setPassword(rs.getString("password"));
+//                mta.setCreated(rs.getTimestamp("time_created"));
+//                mta.setModified(rs.getTimestamp("time_modified"));
+//                mta.setNotes(rs.getString("notes"));
+//                data.add(mta);
+//            }
+//            stmt.close();
             rs.close();
             
         } catch (SQLException e) {

@@ -9,12 +9,16 @@ package team1_finalproject;
 
 //Imports
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import team1_finalproject.supporting_classes.DBQueries;
 
 
 public class DeleteAccountController implements Initializable {
@@ -22,6 +26,10 @@ public class DeleteAccountController implements Initializable {
     //Variables
     @FXML
     private Button btnCancel;
+    @FXML
+    private TextField tfDeleteAccountName;
+    @FXML
+    private Text txtDeleteNotice;
 
 
     /**
@@ -30,10 +38,26 @@ public class DeleteAccountController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        txtDeleteNotice.setVisible(false);
+    }
+    
+     //Add Account: calls method to send data to database
+    @FXML
+    public void deleteAccount(ActionEvent event) throws SQLException {
+        String sName = tfDeleteAccountName.getText();
+        if (DBQueries.deleteAccount(sName)) {
+            txtDeleteNotice.setText(sName + " Account deleted");
+            txtDeleteNotice.setVisible(true);
+        } else {
+            //Inform the user that the delete account failed.
+            txtDeleteNotice.setText(sName + " does not exist;");
+            txtDeleteNotice.setVisible(true);
+        }
     }
 
     public void Cancel(ActionEvent event) throws Exception {
         Stage deleteAccount = (Stage) ((Node) event.getSource()).getScene().getWindow();
         deleteAccount.close();
     }
+    
 }
