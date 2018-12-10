@@ -7,15 +7,16 @@ package team1_finalproject;
  * @Date: Dec 2, 2018
  * @Subclass AddAccount Controller Description: Adds functionality for elements
  */
-
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import team1_finalproject.supporting_classes.DBQueries;
 
@@ -35,7 +36,11 @@ public class AddAccountController implements Initializable {
     private PasswordField tfAccountPassword;
     @FXML
     private TextArea taAccountNotes;
-
+    @FXML
+    private Button btnPasswordGenerator;
+    @FXML
+    private Button btnAddAccount;
+    
     /**
      * Initializes the controller class.
      */
@@ -46,18 +51,18 @@ public class AddAccountController implements Initializable {
     public void PasswordGeneratorButton() {
 
     }
+
     //Add Account: calls method to send data to database
     @FXML
     public void AddAccountButton(ActionEvent event) throws SQLException {
-        if (DBQueries.addAccount(tfAccountName.getText(), tfAccountUserID.getText(),
-                tfAccountPassword.getText(),taAccountNotes.getText())){
-            System.out.println("Added account");
-        } else {
-            System.out.println("Failed on add account");
-        }
+        DBQueries.addAccount(tfAccountName.getText(), tfAccountUserID.getText(),
+                tfAccountPassword.getText(), taAccountNotes.getText());
     }
 
-    //Cancel Button closes pop up
+    /**
+     * Method: Cancel button click exits pop-up
+     */
+    @FXML
     public void CancelButton(ActionEvent event) throws Exception {
         Stage addAccount = (Stage) ((Node) event.getSource()).getScene().getWindow();
         addAccount.close();
