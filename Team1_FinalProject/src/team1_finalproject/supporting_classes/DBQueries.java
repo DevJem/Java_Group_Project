@@ -13,8 +13,9 @@ import java.sql.*;
 
 //Begin Subclass DBQueries
 public class DBQueries {
-    private Statement stmt;
+    private static Statement stmt;
     private static String sRequiredPassword;
+    private static String sName = null;
     
     public DBQueries(Connection conn) throws SQLException {
         stmt = conn.createStatement();
@@ -30,7 +31,6 @@ public class DBQueries {
      * @return 
      */
     String retrieveUser() {
-        String sName = null;
         String sPassword = null;
         ResultSet result;
         String query = "SELECT * FROM User";
@@ -47,10 +47,42 @@ public class DBQueries {
         return "Name is: " + sName + " and password is " + sPassword + "\n";  // TODO turn this off before deployment!!!
     }
     
-    public static void addAccount(String accountName, String username, String password,
+    public static boolean addAccount(String accountName, String username, String password,
             String notes) {
-        //TODO add time cretaed & time modified
-        
+        ResultSet rsUserID;
+        int iUser = -1;
+        try {
+            // Get user id
+            rsUserID = stmt.executeQuery("SELECT idUser FROM User WHERE `program_username` = " + sName + ";");
+            while (rsUserID.next()) {
+                iUser = rsUserID.getInt("idUser");
+                System.out.println("User id is " + iUser);
+            }
+            
+            // add the account
+            String query = 
+                "INSERT INTO `" + sName + "`.`Account`\n" +
+                    "(`account_name`,\n" +
+                    "`username`,\n" +
+                    "`password`,\n" +
+                    "`notes`,\n" +
+                    "`User_idUser`,\n" +
+                    "`account_type`)\n" +
+                "VALUES\n" +
+                    "(\"" + accountName + "\",\n" +
+                    "\"" + username + "\",\n" +
+                    "\"" + password + "\",\n" +
+                    "\"" + notes + "\",\n" +
+                    iUser + ",\n" +
+                    "0);";  // Account type to be added later. 
+            stmt.executeQuery(query);
+            System.out.println("Account added!");
+            
+        } catch (SQLException sqle) {
+            System.out.println("Add Account failed.\n" + sqle);
+            return false;
+        }
+        return true;
     }
     
     public static void editAccount(String accountName, String username, String password, String notes) {

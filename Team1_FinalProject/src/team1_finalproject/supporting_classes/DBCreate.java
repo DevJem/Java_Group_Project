@@ -24,46 +24,43 @@ public class DBCreate {
         
         try {
             // Create User table
-            sql = "CREATE TABLE IF NOT EXISTS `User` (\n" +
-                "  `idUser` INT(11) NOT NULL AUTO_INCREMENT,\n" +
-                "  `program_username` VARCHAR(45) NOT NULL,\n" +
-                "  `program_password` VARCHAR(45) NOT NULL,\n" +
-                "  `administrator` TINYINT(1) NULL DEFAULT '0',\n" +
+            sql = "CREATE TABLE `User` (\n" +
+                "  `idUser` int(11) NOT NULL AUTO_INCREMENT,\n" +
+                "  `program_username` varchar(45) NOT NULL,\n" +
+                "  `program_password` varchar(45) NOT NULL,\n" +
+                "  `administrator` tinyint(1) DEFAULT '0',\n" +
                 "  PRIMARY KEY (`idUser`),\n" +
-                "  UNIQUE INDEX `Username_UNIQUE` (`program_username` ASC))";
+                "  UNIQUE KEY `Username_UNIQUE` (`program_username`)\n" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
             stmt.executeUpdate(sql);
             
             // Create Account table
-            sql = "CREATE TABLE IF NOT EXISTS `Account` (\n" +
-                "  `account_name` VARCHAR(120) NOT NULL,\n" +
-                "  `username` VARCHAR(45) NULL DEFAULT NULL,\n" +
-                "  `password` VARCHAR(45) NULL DEFAULT NULL,\n" +
-                "  `time_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n" +
-                "  `time_modified` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n" +
-                "  `notes` VARCHAR(250) NULL DEFAULT NULL,\n" +
-                "  `User_idUser` INT(11) NOT NULL,\n" +
-                "  `account_type` INT(11) NULL DEFAULT '0',\n" +
-                "  UNIQUE INDEX `account_name_UNIQUE` (`account_name` ASC),\n" +
-                "  INDEX `fk_Account_User1_idx` (`User_idUser` ASC),\n" +
-                "  CONSTRAINT `fk_Account_User1`\n" +
-                "    FOREIGN KEY (`User_idUser`)\n" +
-                "    REFERENCES " + sName + ".`User` (`idUser`)\n" +
-                "    ON DELETE CASCADE\n" +
-                "    ON UPDATE NO ACTION)";
+            sql = "CREATE TABLE `Account` (\n" +
+                "  `account_name` varchar(120) NOT NULL,\n" +
+                "  `username` varchar(45) DEFAULT NULL,\n" +
+                "  `password` varchar(45) DEFAULT NULL,\n" +
+                "  `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n" +
+                "  `time_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n" +
+                "  `notes` varchar(250) DEFAULT NULL,\n" +
+                "  `User_idUser` int(11) NOT NULL,\n" +
+                "  `account_type` int(11) DEFAULT '0',\n" +
+                "  PRIMARY KEY (`account_name`,`User_idUser`),\n" +
+                "  UNIQUE KEY `account_name_UNIQUE` (`account_name`),\n" +
+                "  KEY `fk_Account_User1_idx` (`User_idUser`),\n" +
+                "  CONSTRAINT `fk_Account_User1` FOREIGN KEY (`User_idUser`) REFERENCES `User` (`idUser`) ON DELETE CASCADE ON UPDATE NO ACTION\n" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
             stmt.executeUpdate(sql);
 
             // Create Settings table
-            sql = "CREATE TABLE IF NOT EXISTS `Settings` (\n" +
-                "  `password_update_notifications` TINYINT(1) NOT NULL DEFAULT '0',\n" +
-                "  `user_admin` TINYINT(1) NOT NULL DEFAULT '0',\n" +
-                "  `user_can_modify_settings` TINYINT(1) NOT NULL DEFAULT '1',\n" +
-                "  `User_idUser` INT(11) NOT NULL,\n" +
-                "  INDEX `fk_Settings_User_idx` (`User_idUser` ASC),\n" +
-                "  CONSTRAINT `fk_Settings_User`\n" +
-                "    FOREIGN KEY (`User_idUser`)\n" +
-                "    REFERENCES " + sName + ".`User` (`idUser`)\n" +
-                "    ON DELETE NO ACTION\n" +
-                "    ON UPDATE NO ACTION)";
+            sql = "CREATE TABLE `Settings` (\n" +
+                "  `password_update_notifications` tinyint(1) NOT NULL DEFAULT '0',\n" +
+                "  `user_admin` tinyint(1) NOT NULL DEFAULT '0',\n" +
+                "  `user_can_modify_settings` tinyint(1) NOT NULL DEFAULT '1',\n" +
+                "  `User_idUser` int(11) NOT NULL,\n" +
+                "  PRIMARY KEY (`User_idUser`),\n" +
+                "  KEY `fk_Settings_User_idx` (`User_idUser`),\n" +
+                "  CONSTRAINT `fk_Settings_User` FOREIGN KEY (`User_idUser`) REFERENCES `User` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION\n" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
             stmt.executeUpdate(sql);
         } catch (Exception e) {
             System.out.println("Error!\n" + e.getMessage());

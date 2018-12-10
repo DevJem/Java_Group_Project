@@ -48,9 +48,13 @@ public class AddAccountController implements Initializable {
     }
     //Add Account: calls method to send data to database
     @FXML
-    public void AddAccountButton(ActionEvent even) throws SQLException {
-        DBQueries.addAccount(tfAccountName.getText(), tfAccountUserID.getText(),
-                tfAccountPassword.getText(),taAccountNotes.getText());
+    public void AddAccountButton(ActionEvent event) throws SQLException {
+        if (DBQueries.addAccount(tfAccountName.getText(), tfAccountUserID.getText(),
+                tfAccountPassword.getText(),taAccountNotes.getText())){
+            System.out.println("Added account");
+        } else {
+            System.out.println("Failed on add account");
+        }
     }
 
     //Cancel Button closes pop up
