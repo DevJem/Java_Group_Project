@@ -1,15 +1,18 @@
+package team1_finalproject;
+
 /*
  * @Course: SDEV 450 ~ Java Enterprise
  * @Author Name: Jenney Chang
  * @Assignment Name: team1_finalproject
  * @Description: Controller adds functionality for Main Window Program
  */
-package team1_finalproject;
 
+//Imports
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Parent;
@@ -18,6 +21,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import team1_finalproject.supporting_classes.DBQueries;
 
 public class MainWindowController implements Initializable {
 
@@ -35,8 +39,13 @@ public class MainWindowController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //sets up tree view 
-        tableView();
+        //Set up columns for table view
+        columnAccount.setCellValueFactory(new PropertyValueFactory<>("account"));
+        columnUserID.setCellValueFactory(new PropertyValueFactory<>("userID"));
+        columnPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
+        columnCreated.setCellValueFactory(new PropertyValueFactory<>("Created"));
+        columnModified.setCellValueFactory(new PropertyValueFactory<>("Modified"));
+        columnNotes.setCellValueFactory(new PropertyValueFactory<>("notes"));
         
     }
 
@@ -107,15 +116,5 @@ public class MainWindowController implements Initializable {
         Platform.exit();
     }
     
-    //Create table column defaults
-    private void tableView() {
-        columnAccount.setCellValueFactory(new PropertyValueFactory<>("account"));
-        columnUserID.setCellValueFactory(new PropertyValueFactory<>("userID"));
-        columnPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
-        columnCreated.setCellValueFactory(new PropertyValueFactory<>("Created"));
-        columnModified.setCellValueFactory(new PropertyValueFactory<>("Modified"));
-        columnNotes.setCellValueFactory(new PropertyValueFactory<>("notes"));
-        
-        //Load data from database
-    }
+
 }

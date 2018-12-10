@@ -1,6 +1,9 @@
 package team1_finalproject.supporting_classes;
 
 import java.sql.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import team1_finalproject.Main_TableAccounts;
 
 /**
   *  @Course: SDEV 450 ~ Java Programming III - Enterprise Java
@@ -60,8 +63,8 @@ public class DBQueries {
     public static void deleteAccount (String accountName) {
         //TODO delete account
     }
+}
 
-} // End Subclass DBQueries
 
 /*
  (                         *     

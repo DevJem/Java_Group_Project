@@ -62,9 +62,11 @@ javafx.fxml.FXMLLoader
 javafx.fxml.Initializable
 team1_finalproject.MainWindowController
 javafx.scene.control.cell.PropertyValueFactory
+javafx.scene.control.TableView
 javafx.stage.Modality
 javafx.stage.Stage
 java.lang.Class
+team1_finalproject.supporting_classes.DBQueries
 javafx.scene.Scene
 java.lang.Object
 javafx.scene.Parent
@@ -99,10 +101,13 @@ java.lang.Exception
 ||:team1_finalproject.supporting_classes.DBQueries
 java.lang.StringBuilder
 java.sql.Statement
+team1_finalproject.Main_TableAccounts
 java.sql.ResultSet
+javafx.collections.FXCollections
 team1_finalproject.supporting_classes.DBQueries
-java.lang.System
+javafx.collections.ObservableList
 java.io.PrintStream
+java.lang.System
 java.sql.Connection
 java.lang.Object
 java.sql.SQLException
