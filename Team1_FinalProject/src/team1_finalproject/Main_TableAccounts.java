@@ -8,6 +8,7 @@ package team1_finalproject;
  * @Subclass Main_TableAccounts Description: Holds data for table view
  */
 //Imports
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -18,8 +19,8 @@ public class Main_TableAccounts {
     private SimpleStringProperty account;
     private SimpleStringProperty userID;
     private SimpleStringProperty password;
-    private LocalDate created;
-    private LocalDate modified;
+    private Timestamp created;
+    private Timestamp modified;
     private SimpleStringProperty notes;
 
     //Default constructor
@@ -29,7 +30,7 @@ public class Main_TableAccounts {
 
     //Overload Constructor
     public Main_TableAccounts(String account, String userID, String password, 
-            LocalDate created, LocalDate modified, String notes) {
+            Timestamp created, Timestamp modified, String notes) {
         this.account = new SimpleStringProperty(account);
         this.userID = new SimpleStringProperty(userID);
         this.password = new SimpleStringProperty(password);
@@ -42,39 +43,39 @@ public class Main_TableAccounts {
         return account.get();
     }
 
-    public void setAccount(SimpleStringProperty account) {
-        this.account = account;
+    public void setAccount(String account) {
+        this.account.set(account);
     }
 
     public String getUserID() {
         return userID.get();
     }
 
-    public void setUserID(SimpleStringProperty userID) {
-        this.userID = userID;
+    public void setUserID(String userID) {
+        this.userID.set(userID);
     }
 
     public String getPassword() {
         return password.get();
     }
 
-    public void setPassword(SimpleStringProperty password) {
-        this.password = password;
+    public void setPassword(String password) {
+        this.password.set(password);
     }
 
-        public LocalDate getCreated() {
+        public Timestamp getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDate created) {
+    public void setCreated(Timestamp created) {
         this.created = created;
     }
 
-    public LocalDate getModified() {
+    public Timestamp getModified() {
         return modified;
     }
 
-    public void setModified(LocalDate modified) {
+    public void setModified(Timestamp modified) {
         this.modified = modified;
     }
 
@@ -82,8 +83,8 @@ public class Main_TableAccounts {
         return notes.get();
     }
 
-    public void setNotes(SimpleStringProperty notes) {
-        this.notes = notes;
+    public void setNotes(String notes) {
+        this.notes.set(notes);
     }
     
     
