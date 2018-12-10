@@ -19,10 +19,20 @@ public class DBCreate {
         stmt = conn.createStatement();
     }
     
-    public boolean buildDB() {
+    public boolean buildDB(String sName) {
         String sql;
         
         try {
+            // Create User table
+            sql = "CREATE TABLE IF NOT EXISTS `User` (\n" +
+                "  `idUser` INT(11) NOT NULL AUTO_INCREMENT,\n" +
+                "  `program_username` VARCHAR(45) NOT NULL,\n" +
+                "  `program_password` VARCHAR(45) NOT NULL,\n" +
+                "  `administrator` TINYINT(1) NULL DEFAULT '0',\n" +
+                "  PRIMARY KEY (`idUser`),\n" +
+                "  UNIQUE INDEX `Username_UNIQUE` (`program_username` ASC))";
+            stmt.executeUpdate(sql);
+            
             // Create Account table
             sql = "CREATE TABLE IF NOT EXISTS `Account` (\n" +
                 "  `account_name` VARCHAR(120) NOT NULL,\n" +
@@ -37,7 +47,7 @@ public class DBCreate {
                 "  INDEX `fk_Account_User1_idx` (`User_idUser` ASC),\n" +
                 "  CONSTRAINT `fk_Account_User1`\n" +
                 "    FOREIGN KEY (`User_idUser`)\n" +
-                "    REFERENCES `mydb_Migration`.`User` (`idUser`)\n" +
+                "    REFERENCES " + sName + ".`User` (`idUser`)\n" +
                 "    ON DELETE CASCADE\n" +
                 "    ON UPDATE NO ACTION)";
             stmt.executeUpdate(sql);
@@ -51,19 +61,9 @@ public class DBCreate {
                 "  INDEX `fk_Settings_User_idx` (`User_idUser` ASC),\n" +
                 "  CONSTRAINT `fk_Settings_User`\n" +
                 "    FOREIGN KEY (`User_idUser`)\n" +
-                "    REFERENCES `mydb_Migration`.`User` (`idUser`)\n" +
+                "    REFERENCES " + sName + ".`User` (`idUser`)\n" +
                 "    ON DELETE NO ACTION\n" +
                 "    ON UPDATE NO ACTION)";
-            stmt.executeUpdate(sql);
-
-            // Create User table
-            sql = "CREATE TABLE IF NOT EXISTS `User` (\n" +
-                "  `idUser` INT(11) NOT NULL AUTO_INCREMENT,\n" +
-                "  `program_username` VARCHAR(45) NOT NULL,\n" +
-                "  `program_password` VARCHAR(45) NOT NULL,\n" +
-                "  `administrator` TINYINT(1) NULL DEFAULT '0',\n" +
-                "  PRIMARY KEY (`idUser`),\n" +
-                "  UNIQUE INDEX `Username_UNIQUE` (`program_username` ASC))";
             stmt.executeUpdate(sql);
         } catch (Exception e) {
             System.out.println("Error!\n" + e.getMessage());

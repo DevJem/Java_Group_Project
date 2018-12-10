@@ -44,12 +44,13 @@ public class DBQueries {
             System.out.println("Error getting info:\n" + e);
         }
         sRequiredPassword = sPassword;      // For pw validation
-        return "Name is: " + sName + " and password is " + sPassword + "\n";
+        return "Name is: " + sName + " and password is " + sPassword + "\n";  // TODO turn this off before deployment!!!
     }
     
     public static void addAccount(String accountName, String username, String password,
             String notes) {
         //TODO add time cretaed & time modified
+        
     }
     
     public static void editAccount(String accountName, String username, String password, String notes) {

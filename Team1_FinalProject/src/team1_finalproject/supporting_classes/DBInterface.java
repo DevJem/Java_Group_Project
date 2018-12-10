@@ -82,7 +82,8 @@ public class DBInterface {
             create.executeUpdate("CREATE DATABASE " + sName);
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + sName, "root", "root");
             DBCreate newDB = new DBCreate(conn);
-            if (!newDB.buildDB()) {
+            if (!newDB.buildDB(sName)) {
+                System.out.println("Failed creating tables");
                 throw new SQLException();
             }
             if (!newDB.addUser(sName, sPassword)) {
