@@ -50,13 +50,21 @@ public class DBQueries {
         return "Name is: " + sName + " and password is " + sPassword + "\n";  // TODO turn this off before deployment!!!
     }
 
+    /**
+     * Add account details
+     * @param accountName
+     * @param username
+     * @param password
+     * @param notes
+     * @return 
+     */
     public static boolean addAccount(String accountName, String username, String password,
             String notes) {
         ResultSet rsUserID;
         int iUser = -1;
         try {
             // Get user id
-            rsUserID = stmt.executeQuery("SELECT idUser FROM User WHERE `program_username` = " + sName + ";");
+            rsUserID = stmt.executeQuery("SELECT idUser FROM User WHERE `program_username` = \"" + sName + "\";");
             while (rsUserID.next()) {
                 iUser = rsUserID.getInt("idUser");
                 System.out.println("User id is " + iUser);
@@ -78,7 +86,7 @@ public class DBQueries {
                     + "\"" + notes + "\",\n"
                     + iUser + ",\n"
                     + "0);";  // Account type to be added later. 
-            stmt.executeQuery(query);
+            stmt.executeUpdate(query);
             System.out.println("Account added!");
 
         } catch (SQLException sqle) {
@@ -88,10 +96,73 @@ public class DBQueries {
         return true;
     }
 
-    public static void editAccount(String accountName, String username, String password, String notes) {
+    /**
+     * Edit account details
+     * @param accountName
+     * @param username
+     * @param password
+     * @param notes 
+     */
+    public static boolean editAccount(String accountName, String username, String password, String notes) {
         //TODO Edit account using only changed info
+        ResultSet rsAccount;
+        String sAccount = "";
+        try {
+            // Get Account name
+            rsAccount = stmt.executeQuery("SELECT * FROM Account WHERE `account_name` = \"" + accountName + "\";");
+            while (rsAccount.next()) {
+                sAccount = rsAccount.getString("account_name");
+                System.out.println("Account is " + sAccount);
+            }
+            // edit the account
+            
+            
+            
+            int currentCount = 0;
+            int lastCount = 0;
+            String query = "UPDATE `Account` ";
+            
+            // edit entry if there's content
+            if (!username.equals("")) {
+                if (currentCount > lastCount) {
+                    lastCount = currentCount;
+                    query += ", ";
+                }
+                query += "SET `username` = \"" + username + "\"";
+                currentCount++;
+            }
+            if (!password.equals("")) {
+                if (currentCount > lastCount) {
+                    lastCount = currentCount;
+                    query += ", ";
+                }
+                query += "SET `password` = \"" + password + "\"";
+                currentCount++;
+            }
+            if (!notes.equals("")) {
+                if (currentCount > lastCount) {
+                    lastCount = currentCount;
+                    query += ", ";
+                }
+                query += "SET `notes` = \"" + notes + "\"";
+                currentCount++;
+            }
+            query += " WHERE `account_name` = \"" + sAccount + "\"";
+            
+            stmt.executeUpdate(query);
+            System.out.println("Account edited!");
+            
+        } catch (SQLException sqle) {
+            System.out.println("Edit Account failed.\n" + sqle);
+            return false;
+        }
+        return true;
     }
 
+    /**
+     * Delete account
+     * @param accountName 
+     */
     public static void deleteAccount(String accountName) {
         //TODO delete account
     }

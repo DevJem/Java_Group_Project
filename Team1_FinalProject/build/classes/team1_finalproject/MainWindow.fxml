@@ -21,7 +21,7 @@
   <center>
     <HBox prefHeight="305.0" prefWidth="600.0">
       <children>
-        <TableView fx:id="tableView" focusTraversable="false" onSort="#tableView" HBox.hgrow="ALWAYS">
+        <TableView fx:id="tableView" focusTraversable="false" HBox.hgrow="ALWAYS">
           <columns>
             <TableColumn fx:id="columnAccount" prefWidth="92.0" text="Account" />
             <TableColumn fx:id="columnUserID" maxWidth="5000.0" minWidth="10.0" prefWidth="94.0" text="User ID" />

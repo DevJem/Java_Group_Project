@@ -6,6 +6,7 @@
 package team1_finalproject;
 
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +23,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import team1_finalproject.supporting_classes.DBQueries;
 
 public class EditAccountController implements Initializable {
 
@@ -37,21 +39,21 @@ public class EditAccountController implements Initializable {
     @FXML
     private Button btnCancelEdit;
     @FXML
-    private TextField tfEditAccountName;
+    private TextField tfEditAccountName;  //
     @FXML
     private Insets x3;
     @FXML
-    private TextField tfEditAccountID;
+    private TextField tfEditAccountID;  //
     @FXML
     private Insets x2;
     @FXML
-    private PasswordField tfEditAccountPassword;
+    private PasswordField tfEditAccountPassword;  //
     @FXML
     private TextField tfEditAccountURL;
     @FXML
     private ChoiceBox<?> choicebEditAccountType;
     @FXML
-    private TextArea taEditAccountNotes;
+    private TextArea taEditAccountNotes;  //
     @FXML
     private Insets x4;
 
@@ -61,6 +63,15 @@ public class EditAccountController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }
+    
+    public void UpdateAccount(ActionEvent event) throws Exception {
+        if (DBQueries.editAccount(tfEditAccountName.getText(), tfEditAccountID.getText(),
+                tfEditAccountPassword.getText(), taEditAccountNotes.getText())) {
+            //TODO: nothing
+        } else {
+            //TODO: Inform the user that the Edit account failed.
+        }
     }
 
     
