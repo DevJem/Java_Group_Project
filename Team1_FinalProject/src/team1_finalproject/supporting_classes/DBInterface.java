@@ -42,7 +42,7 @@ public class DBInterface {
          */
         // Use existing db
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + sName, "root", "jc123041");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + sName, "root", "root");
             System.out.println("Connected to DB:\t" + sName + "\n\n");
             
         } catch (Exception e) {
@@ -77,10 +77,10 @@ public class DBInterface {
     public boolean createDB() {
         // Create db if doesn't exist
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "jc123041");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "root");
             create = conn.createStatement();
             create.executeUpdate("CREATE DATABASE " + sName);
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + sName, "root", "jc123041");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + sName, "root", "root");
             DBCreate newDB = new DBCreate(conn);
             if (!newDB.buildDB(sName)) {
                 System.out.println("Failed creating tables");

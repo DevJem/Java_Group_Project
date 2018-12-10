@@ -8,6 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="Team1_FinalProject.jar" size="78591" download="eager" />
     <jar href="lib/c3p0-0.9.1-pre6.jar" size="531005" download="eager" />
     <jar href="lib/jboss-common-jdbc-wrapper-src.jar" size="35342" download="eager" />
@@ -15,6 +16,10 @@
     <jar href="lib/mysql-connector-java-8.0.13.jar" size="2132635" download="eager" />
     <jar href="lib/protobuf-java-3.6.1.jar" size="1421323" download="eager" />
     <jar href="lib/slf4j-api-1.6.1.jar" size="25496" download="eager" />
+=======
+    <jar href="Team1_FinalProject.jar" size="78142" download="eager" />
+    <jar href="lib/mysql-connector-java-5.1.23-bin.jar" size="987191" download="eager" />
+>>>>>>> 0a2cbdb04ea37faa395cbad642d51fd548e359a5
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Team1_FinalProject" >
     <param name="requiredFXVersion" value="8.0+"/>
