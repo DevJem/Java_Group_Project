@@ -6,7 +6,6 @@ package team1_finalproject;
  * @Assignment Name: team1_finalproject
  * @Description: Controller adds functionality for Main Window Program
  */
-
 //Imports
 import java.net.URL;
 import java.sql.Timestamp;
@@ -42,8 +41,9 @@ public class MainWindowController implements Initializable {
 
     /**
      * Method: Initializes
+     *
      * @param url
-     * @param rb 
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -55,14 +55,19 @@ public class MainWindowController implements Initializable {
         columnModified.setCellValueFactory(new PropertyValueFactory<>("Modified"));
         columnNotes.setCellValueFactory(new PropertyValueFactory<>("notes"));
 
+        //populates table 
         tableView.setItems(DBQueries.buildTableView());
-        
+
         //TODO: Change password column to password field unless userid = currentuser
         //if (DBQueries.validateCurrentUser()) {};  //working on this
-
     }
 
-    //Handles Button Click: opens up add account window as popup
+    /**
+     * Method: Add Account pop-up
+     *
+     * @param event
+     * @throws Exception
+     */
     public void addButton(ActionEvent event) throws Exception {
         Stage stage;
         Parent rootBP = FXMLLoader.load(getClass().getResource("AddAccount.fxml"));
@@ -75,7 +80,12 @@ public class MainWindowController implements Initializable {
         tableView.setItems(DBQueries.buildTableView());
     }
 
-    //Handles Button Click: opens up edit account window as popup
+    /**
+     * Method: Edit Account pop-up
+     *
+     * @param event
+     * @throws Exception
+     */
     public void editButton(ActionEvent event) throws Exception {
         Stage stage;
         Parent rootBP = FXMLLoader.load(getClass().getResource("EditAccount.fxml"));
@@ -88,7 +98,12 @@ public class MainWindowController implements Initializable {
         tableView.setItems(DBQueries.buildTableView());
     }
 
-    //Handles Button Click: opens up delete account window as popup
+    /**
+     * Method: Delete Account pop-up
+     *
+     * @param event
+     * @throws Exception
+     */
     public void deleteButton(ActionEvent event) throws Exception {
         Stage stage;
         Parent rootBP = FXMLLoader.load(getClass().getResource("DeleteAccount.fxml"));
@@ -101,14 +116,18 @@ public class MainWindowController implements Initializable {
         tableView.setItems(DBQueries.buildTableView());
     }
 
-    //Handles Button Click: opens up password gen window as popup
+    /**
+     * Method: Password Generator Pop-up
+     *
+     * @param event
+     * @throws Exception
+     */
     public void passwordGenerator(ActionEvent event) throws Exception {
         Stage stage;
         Parent rootBP = FXMLLoader.load(getClass().getResource("PasswordGenerator.fxml"));
         Scene sceneBP = new Scene(rootBP);
-        
-        //TODO: disable save button on password generator if opened from main screen
 
+        //TODO: disable save button on password generator if opened from main screen
         stage = new Stage();
         stage.setScene(sceneBP);
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -116,7 +135,12 @@ public class MainWindowController implements Initializable {
         tableView.setItems(DBQueries.buildTableView());
     }
 
-    //Menu Item Settings: opens up settings window as popup
+    /**
+     * Method: Settings pop-up
+     *
+     * @param event
+     * @throws Exception
+     */
     @FXML
     public void Settings(ActionEvent event) throws Exception {
         Stage stage;
@@ -130,8 +154,13 @@ public class MainWindowController implements Initializable {
         tableView.setItems(DBQueries.buildTableView());
     }
 
+    /**
+     * Method: Exits program
+     *
+     * @param event
+     * @throws Exception
+     */
     @FXML
-    //Menu Item Exit: Exits program 
     public void ExitProgram(ActionEvent event) throws Exception {
         Platform.exit();
     }

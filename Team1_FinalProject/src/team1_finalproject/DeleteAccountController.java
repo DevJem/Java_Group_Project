@@ -47,6 +47,7 @@ public class DeleteAccountController implements Initializable {
     @FXML
     public void deleteAccount(ActionEvent event) throws SQLException {
         String sName = tfDeleteAccountName.getText();
+        
         if (DBQueries.deleteAccount(sName)) {
             txtDeleteNotice.setText(sName + " Account deleted");
             txtDeleteNotice.setVisible(true);
@@ -55,8 +56,6 @@ public class DeleteAccountController implements Initializable {
             txtDeleteNotice.setText(sName + " does not exist;");
             txtDeleteNotice.setVisible(true);
         }
-        //TODO: This acknowledges deletions if zero rows are affected. Which means
-        //  that the user isn't calling the right account name
     }
 
     /**
