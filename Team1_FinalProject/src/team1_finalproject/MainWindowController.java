@@ -8,6 +8,7 @@ package team1_finalproject;
  */
 //Imports
 import java.net.URL;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -34,9 +35,9 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableColumn<Main_TableAccounts, String> columnPassword;
     @FXML
-    private TableColumn<Main_TableAccounts, LocalDate> columnCreated;
+    private TableColumn<Main_TableAccounts, Timestamp> columnCreated;
     @FXML
-    private TableColumn<Main_TableAccounts, LocalDate> columnModified;
+    private TableColumn<Main_TableAccounts, Timestamp> columnModified;
     @FXML
     private TableColumn<Main_TableAccounts, String> columnNotes;
 
@@ -54,6 +55,9 @@ public class MainWindowController implements Initializable {
         columnNotes.setCellValueFactory(new PropertyValueFactory<>("notes"));
 
         tableView.setItems(DBQueries.buildTableView());
+        
+        //TODO: Change password column to password field unless userid = currentuser
+        //if (DBQueries.validateCurrentUser()) {};  //working on this
 
     }
 
@@ -67,6 +71,7 @@ public class MainWindowController implements Initializable {
         stage.setScene(sceneBP);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
+        tableView.setItems(DBQueries.buildTableView());
     }
 
     //Handles Button Click: opens up edit account window as popup
@@ -79,6 +84,7 @@ public class MainWindowController implements Initializable {
         stage.setScene(sceneBP);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
+        tableView.setItems(DBQueries.buildTableView());
     }
 
     //Handles Button Click: opens up delete account window as popup
@@ -91,6 +97,7 @@ public class MainWindowController implements Initializable {
         stage.setScene(sceneBP);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
+        tableView.setItems(DBQueries.buildTableView());
     }
 
     //Handles Button Click: opens up password gen window as popup
@@ -103,6 +110,7 @@ public class MainWindowController implements Initializable {
         stage.setScene(sceneBP);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
+        tableView.setItems(DBQueries.buildTableView());
     }
 
     //Menu Item Settings: opens up settings window as popup
@@ -116,6 +124,7 @@ public class MainWindowController implements Initializable {
         stage.setScene(sceneBP);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
+        tableView.setItems(DBQueries.buildTableView());
     }
 
     @FXML

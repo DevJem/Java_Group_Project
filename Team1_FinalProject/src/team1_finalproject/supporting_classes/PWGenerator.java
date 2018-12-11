@@ -18,7 +18,7 @@ public class PWGenerator {
     private boolean bLowcase = true;    // get from UI
     private boolean bSpecial = true;    // get from UI
     private boolean bNumber = true;     // get from UI
-    private int iLength = 5;            // get from UI
+    private int iLength = 20;            // get from UI
     private String sResult;              // send to UI
     private String sOptions = "";
     private char[] cUpcase = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
@@ -33,13 +33,18 @@ public class PWGenerator {
     private char[] cNumber = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
     
     // constructor
-    public PWGenerator() {
+    public PWGenerator(int length, boolean upcase, boolean lowcase, boolean special, boolean number) {
+        iLength = length;
+        bUpcase = upcase;
+        bLowcase = lowcase;
+        bSpecial = special;
+        bNumber = number;
     }
     
     /**
      * This method generates the password of the desired length
      */
-    public void generate() {
+    public String generate() {
         
         sOptions = setOptions();  // Defines complexity requirements
         while (true) {
@@ -56,6 +61,7 @@ public class PWGenerator {
             }
         }
         System.out.println("Generated password is: " + sResult);
+        return sResult;
     }
     
     /**

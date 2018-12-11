@@ -9,6 +9,7 @@ package team1_finalproject.supporting_classes;
  */
 //Imports
 import java.sql.*;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import team1_finalproject.Main_TableAccounts;
@@ -36,7 +37,7 @@ public class DBQueries {
      */
     String retrieveUser() {
         String sPassword = null;
-        ResultSet result;
+        ResultSet result = null;
         String query = "SELECT * FROM User";
         try {
             result = stmt.executeQuery(query);
@@ -47,6 +48,7 @@ public class DBQueries {
         } catch (SQLException e) {
             System.out.println("Error getting info:\n" + e);
         }
+        
         sRequiredPassword = sPassword;      // For pw validation
         return "Name is: " + sName + " and password is " + sPassword + "\n";  // TODO turn this off before deployment!!!
     }
@@ -186,30 +188,34 @@ public class DBQueries {
             return true;
     }
     
-    public static ObservableList buildTableView() {
+    public static ObservableList<Main_TableAccounts> buildTableView() {
         ObservableList<Main_TableAccounts> data = FXCollections.observableArrayList();
         String sqlStatement = "select * from Account";
         
         try {
             ResultSet rs = stmt.executeQuery(sqlStatement);
             
-//            while (rs.next()) {
-//                Main_TableAccounts mta = new Main_TableAccounts();
-//                mta.setAccount(rs.getString("account_name"));
-//                mta.setUserID(rs.getString("username"));
-//                mta.setPassword(rs.getString("password"));
-//                mta.setCreated(rs.getTimestamp("time_created"));
-//                mta.setModified(rs.getTimestamp("time_modified"));
-//                mta.setNotes(rs.getString("notes"));
-//                data.add(mta);
-//            }
-//            stmt.close();
+            while (rs.next()) {
+                Main_TableAccounts mta = new Main_TableAccounts();
+                mta.setAccount(new SimpleStringProperty(rs.getString("account_name")));
+                mta.setUserID(new SimpleStringProperty(rs.getString("username")));
+                mta.setPassword(new SimpleStringProperty(rs.getString("password")));
+                mta.setCreated(rs.getTimestamp("time_created"));
+                mta.setModified(rs.getTimestamp("time_modified"));
+                mta.setNotes(new SimpleStringProperty(rs.getString("notes")));
+                data.add(mta);
+            }
             rs.close();
             
         } catch (SQLException e) {
             System.out.println("Error occured while loading data: " + e);
         }
         return data;
+    }
+    
+    public static boolean validateCurrentUser() {
+        
+        return true;
     }
 }
 

@@ -19,13 +19,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import team1_finalproject.supporting_classes.PWGenerator;
 
 public class PasswordGeneratorController implements Initializable {
 
     //Variables
+    //TODO: clean up unused variables and imports
     @FXML
     private Label lblPasswordGenerator;
     @FXML
@@ -45,7 +48,7 @@ public class PasswordGeneratorController implements Initializable {
     @FXML
     private CheckBox cbSelectAll;
     @FXML
-    private ListView<?> lvGeneratedPassword;
+    private TextArea taGeneratedPassword;
     @FXML
     private Font x2;
     @FXML
@@ -75,8 +78,44 @@ public class PasswordGeneratorController implements Initializable {
         passwordGen.close();
     }
 
-    public void CheckBox() {
-
+    public boolean CheckBox() {
+        boolean checkboxesGood = false;
+        if (cbSelectAll.isSelected()) {
+            cbUpperCase.setSelected(true);
+            cbLowerCase.setSelected(true);
+            cbSpecialCharas.setSelected(true);
+            cbNumbers.setSelected(true);
+            checkboxesGood = true;
+        }
+        // TODO: handle the rest of the checkboxes
+        return checkboxesGood;
+    }
+    
+    public String generatePW() {
+        taGeneratedPassword.clear();
+        //TODO: validate integers for password length textfield
+        if (!CheckBox()) {
+            System.out.println("Invalid checkbox selection");
+            //TODO: Alert users to pick correct checkboxes.
+            return "";
+        }
+        
+        final int PW_RUNS = 10;  // Number of passwords generated
+        String sGeneratedPasswords[] = new String[PW_RUNS];
+        int iLength = Integer.valueOf(tfPasswordLength.getText());
+        boolean bUpcase = cbUpperCase.isSelected();
+        boolean bLowcase = cbLowerCase.isSelected();
+        boolean bSpecial = cbSpecialCharas.isSelected();
+        boolean bNums = cbNumbers.isSelected();
+        
+        PWGenerator pwGenerate = new PWGenerator(iLength, bUpcase, bLowcase, bSpecial, bNums);
+        
+        for (int i = 0; i < PW_RUNS; i++) {
+            sGeneratedPasswords[i] = pwGenerate.generate();
+            taGeneratedPassword.appendText(sGeneratedPasswords[i] + "\n");
+        }
+        
+        return sGeneratedPasswords[0];
     }
     
     //TODO interface pwgen here

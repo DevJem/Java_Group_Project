@@ -49,7 +49,7 @@ public class AddAccountController implements Initializable {
     }
 
     public void PasswordGeneratorButton() {
-
+        //TODO open pwGenerator and accept string result
     }
 
     //Add Account: calls method to send data to database
@@ -57,7 +57,7 @@ public class AddAccountController implements Initializable {
     public void AddAccountButton(ActionEvent event) throws SQLException {
         if (DBQueries.addAccount(tfAccountName.getText(), tfAccountUserID.getText(),
                 tfAccountPassword.getText(), taAccountNotes.getText())) {
-            //TODO: nothing
+            //TODO: print success
         } else {
             //TODO: Inform the user that the add account failed.
         }

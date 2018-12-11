@@ -26,8 +26,8 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" fx:id="x1" />
           </HBox.margin>
         </Button>
-        <Button fx:id="btnSaveEdit" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#UpdateAccount" prefHeight="30.0" prefWidth="151.0" text="Save" textFill="WHITE" HBox.margin="$x1" />
-        <Button fx:id="btnCancelEdit" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="151.0" text="Cancel" textFill="WHITE" HBox.margin="$x1" />
+        <Button fx:id="btnSaveEdit" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#UpdateAccount" prefHeight="30.0" prefWidth="151.0" text="Save" textFill="WHITE" HBox.margin="$x1" />
+        <Button fx:id="btnCancelEdit" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="151.0" text="Close" textFill="WHITE" HBox.margin="$x1" />
       </children>
     </HBox>
   </bottom>
@@ -36,22 +36,22 @@
       <children>
         <VBox prefHeight="196.0" prefWidth="263.0">
           <children>
-            <TextField fx:id="tfEditAccountName" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Account Name">
+            <TextField fx:id="tfEditAccountName" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Account Name">
               <VBox.margin>
                 <Insets bottom="5.0" left="10.0" right="10.0" fx:id="x3" />
               </VBox.margin>
             </TextField>
-            <TextField fx:id="tfEditAccountID" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="User ID">
+            <TextField fx:id="tfEditAccountID" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="User ID">
               <VBox.margin>
                 <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" fx:id="x2" />
               </VBox.margin>
             </TextField>
-            <PasswordField fx:id="tfEditAccountPassword" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Password" VBox.margin="$x2" />
+            <PasswordField fx:id="tfEditAccountPassword" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Password" VBox.margin="$x2" />
           </children>
         </VBox>
         <VBox prefHeight="206.0" prefWidth="250.0">
           <children>
-            <TextArea fx:id="taEditAccountNotes" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="141.0" prefWidth="230.0" promptText="Account Notes" wrapText="true">
+            <TextArea fx:id="taEditAccountNotes" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="141.0" prefWidth="230.0" promptText="Account Notes" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" />
                      </VBox.margin></TextArea>

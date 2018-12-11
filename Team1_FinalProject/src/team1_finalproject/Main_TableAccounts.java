@@ -42,27 +42,27 @@ public class Main_TableAccounts {
         return account.get();
     }
 
-    public void setAccount(String account) {
-        this.account.set(account);
+    public void setAccount(SimpleStringProperty account) {
+        this.account = account;
     }
 
     public String getUserID() {
         return userID.get();
     }
 
-    public void setUserID(String userID) {
-        this.userID.set(userID);
+    public void setUserID(SimpleStringProperty userID) {
+        this.userID = userID;
     }
 
     public String getPassword() {
         return password.get();
     }
 
-    public void setPassword(String password) {
-        this.password.set(password);
+    public void setPassword(SimpleStringProperty password) {
+        this.password = password;
     }
 
-        public Timestamp getCreated() {
+    public Timestamp getCreated() {
         return created;
     }
 
@@ -82,8 +82,8 @@ public class Main_TableAccounts {
         return notes.get();
     }
 
-    public void setNotes(String notes) {
-        this.notes.set(notes);
+    public void setNotes(SimpleStringProperty notes) {
+        this.notes = notes;
     }
     
     

@@ -68,15 +68,19 @@ public class EditAccountController implements Initializable {
     public void UpdateAccount(ActionEvent event) throws Exception {
         if (DBQueries.editAccount(tfEditAccountName.getText(), tfEditAccountID.getText(),
                 tfEditAccountPassword.getText(), taEditAccountNotes.getText())) {
-            //TODO: nothing
+            //TODO: Inform success
         } else {
             //TODO: Inform the user that the Edit account failed.
         }
     }
+    
+    //TODO password gen button 
+    //TODO open pwGenerator and accept string result
 
     
     //Cancel Button: closes popup from main window
     public void Cancel(ActionEvent event) throws Exception {
+        //TODO this doesn't close the window
         Stage addAccount = (Stage) ((Node) event.getSource()).getScene().getWindow();
         addAccount.close();
     }

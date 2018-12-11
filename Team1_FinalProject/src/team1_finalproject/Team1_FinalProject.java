@@ -32,13 +32,7 @@ public class Team1_FinalProject extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        final int PW_RUNS = 10;  // Number of passwords generated
         
-        // PW Generator code. Needs it's own method.
-//        PWGenerator pwGenerate = new PWGenerator();
-//        for (int i = 0; i < PW_RUNS; i++) {
-//            pwGenerate.generate();
-//        }
         launch(args);
     }
 }

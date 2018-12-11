@@ -62,6 +62,10 @@ public class DBCreate {
                 "  CONSTRAINT `fk_Settings_User` FOREIGN KEY (`User_idUser`) REFERENCES `User` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION\n" +
                 ") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
             stmt.executeUpdate(sql);
+            
+            String sAdmin = "INSERT INTO " + sName + ".`User` (`program_username`, "
+                + "`program_password`, `administrator`) VALUES "
+                + "(\"admin\", \"admin\", 1);";
         } catch (Exception e) {
             System.out.println("Error!\n" + e.getMessage());
             return false;
@@ -72,7 +76,7 @@ public class DBCreate {
     boolean addUser(String sName, String sPassword) {
         String sql = "INSERT INTO " + sName + ".`User` (`program_username`, "
                 + "`program_password`, `administrator`) VALUES "
-                + "(\"" + sName + "\", \"" + sPassword + "\", 1);";
+                + "(\"" + sName + "\", \"" + sPassword + "\", 0);";
         try {
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
