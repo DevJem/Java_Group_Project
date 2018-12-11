@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -25,23 +24,26 @@ public class DeleteAccountController implements Initializable {
 
     //Variables
     @FXML
-    private Button btnCancel;
-    @FXML
     private TextField tfDeleteAccountName;
     @FXML
     private Text txtDeleteNotice;
 
 
     /**
-     * Initializes the controller class.
+     * Method: Initialize
+     * @param url
+     * @param rb 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         txtDeleteNotice.setVisible(false);
     }
     
-     //delete Account: calls method to send data to database
+     /**
+      * Method: Deletes user account from db
+      * @param event
+      * @throws SQLException 
+      */
     @FXML
     public void deleteAccount(ActionEvent event) throws SQLException {
         String sName = tfDeleteAccountName.getText();
@@ -57,8 +59,12 @@ public class DeleteAccountController implements Initializable {
         //  that the user isn't calling the right account name
     }
 
-    public void Cancel(ActionEvent event) throws Exception {
-        //TODO this doesn't close the window
+    /**
+     * Method: Close delete account pop-up
+     * @param event
+     * @throws Exception 
+     */
+    public void Close(ActionEvent event) throws Exception {
         Stage deleteAccount = (Stage) ((Node) event.getSource()).getScene().getWindow();
         deleteAccount.close();
     }
