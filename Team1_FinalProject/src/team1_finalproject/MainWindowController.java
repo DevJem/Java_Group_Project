@@ -7,6 +7,7 @@ package team1_finalproject;
  * @Description: Controller adds functionality for Main Window Program
  */
 //Imports
+import com.mysql.cj.util.StringUtils;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
@@ -17,7 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.Clipboard;
+import javafx.scene.input.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import team1_finalproject.supporting_classes.DBQueries;
@@ -39,6 +40,8 @@ public class MainWindowController implements Initializable {
     private TableColumn<Main_TableAccounts, Timestamp> columnModified;
     @FXML
     private TableColumn<Main_TableAccounts, String> columnNotes;
+
+    Clipboard systemClipboard = Clipboard.getSystemClipboard();
 
     /**
      * Method: Initializes
@@ -63,24 +66,24 @@ public class MainWindowController implements Initializable {
     }
 
     /**
-     * Method: Populates table view 
+     * Method: Populates table view
      */
     public void populateTable() {
         tableView.setItems(DBQueries.buildTableView());
     }
-    
+
     //TODO open button
     @FXML
     public void openButton(ActionEvent event) throws Exception {
-        
+
     }
-    
+
     //TODO save button
     @FXML
     public void saveButton(ActionEvent event) throws Exception {
-        
+
     }
-    
+
     /**
      * Method: Add Account pop-up
      *
@@ -96,7 +99,7 @@ public class MainWindowController implements Initializable {
         stage.setScene(sceneBP);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
- 
+
         populateTable();
     }
 
@@ -135,7 +138,7 @@ public class MainWindowController implements Initializable {
         stage.showAndWait();
         populateTable();
     }
-    
+
     /**
      * Method: Settings pop-up
      *
@@ -154,7 +157,7 @@ public class MainWindowController implements Initializable {
         stage.showAndWait();
         populateTable();
     }
-    
+
     /**
      * Method: Exits program
      *
@@ -169,22 +172,27 @@ public class MainWindowController implements Initializable {
     //MENU ITEMS LEFT
     //method cut
     public void cut() {
-        
+
     }
-    
+
     //method copy
+    @FXML
     public void copy() {
-        
+        String selectedText = "";
+
+        ClipboardContent content = new ClipboardContent();
+        content.putString(selectedText);
+        systemClipboard.setContent(content);
     }
-    
+
     //method paste
     public void paste() {
-        
+
     }
-    
+
     //method about
     public void about() {
-        
+
     }
 
     //TODO menu item save
