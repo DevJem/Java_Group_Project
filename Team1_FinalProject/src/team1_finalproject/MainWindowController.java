@@ -6,13 +6,12 @@ package team1_finalproject;
  * @Assignment Name: team1_finalproject
  * @Description: Controller adds functionality for Main Window Program
  */
+
 //Imports
 import java.net.URL;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Parent;
@@ -42,7 +41,9 @@ public class MainWindowController implements Initializable {
     private TableColumn<Main_TableAccounts, String> columnNotes;
 
     /**
-     * Initializes the controller class.
+     * Method: Initializes
+     * @param url
+     * @param rb 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

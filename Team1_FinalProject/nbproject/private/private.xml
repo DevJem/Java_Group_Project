@@ -3,15 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/SignInController.java</file>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/AddAccountController.java</file>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/AddAccount.fxml</file>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/supporting_classes/DBQueries.java</file>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/supporting_classes/DBCreate.java</file>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/supporting_classes/PWGenerator.java</file>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/Team1_FinalProject.java</file>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/PasswordGeneratorController.java</file>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/supporting_classes/DBInterface.java</file>
+            <file>file:/Users/Jay/Documents/GitHub/Team1_FinalProject/Team1_FinalProject/src/team1_finalproject/MainWindowController.java</file>
+            <file>file:/Users/Jay/Documents/GitHub/Team1_FinalProject/Team1_FinalProject/src/team1_finalproject/supporting_classes/DBQueries.java</file>
         </group>
     </open-files>
 </project-private>

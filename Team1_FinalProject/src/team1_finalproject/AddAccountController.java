@@ -7,24 +7,20 @@ package team1_finalproject;
  * @Date: Dec 2, 2018
  * @Subclass AddAccount Controller Description: Adds functionality for elements
  */
+//Imports
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
+import javafx.fxml.*;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import team1_finalproject.supporting_classes.DBQueries;
 
-/**
- * FXML Controller class
- *
- * @author jay
- */
 public class AddAccountController implements Initializable {
 
     //Variables 
@@ -36,26 +32,37 @@ public class AddAccountController implements Initializable {
     private PasswordField tfAccountPassword;
     @FXML
     private TextArea taAccountNotes;
-    @FXML
-    private Button btnPasswordGenerator;
-    @FXML
-    private Button btnAddAccount;
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
-    
-    //TODO password gen button 
-    //TODO open pwGenerator and accept string result
 
-    public void PasswordGeneratorButton() {
-        //TODO open pwGenerator and accept string result
+    /**
+     * Method: Opens password generator
+     *
+     * @param event
+     * @throws Exception
+     */
+    public void PasswordGeneratorButton(ActionEvent event) throws Exception {
+        Stage stage;
+        Parent rootBP = FXMLLoader.load(getClass().getResource("PasswordGenerator.fxml"));
+        Scene sceneBP = new Scene(rootBP);
+
+        stage = new Stage();
+        stage.setScene(sceneBP);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
     }
 
-    //Add Account: calls method to send data to database
+    /**
+     * Method: Adds Account to db
+     *
+     * @param event
+     * @throws SQLException
+     */
     @FXML
     public void AddAccountButton(ActionEvent event) throws SQLException {
         if (DBQueries.addAccount(tfAccountName.getText(), tfAccountUserID.getText(),
@@ -67,10 +74,13 @@ public class AddAccountController implements Initializable {
     }
 
     /**
-     * Method: Cancel button click exits pop-up
+     * Method: Closes Add Account pop-up
+     *
+     * @param event
+     * @throws Exception
      */
     @FXML
-    public void CancelButton(ActionEvent event) throws Exception {
+    public void CloseButton(ActionEvent event) throws Exception {
         Stage addAccount = (Stage) ((Node) event.getSource()).getScene().getWindow();
         addAccount.close();
     }
