@@ -58,6 +58,7 @@ public class DeleteAccountController implements Initializable {
     }
 
     public void Cancel(ActionEvent event) throws Exception {
+        //TODO this doesn't close the window
         Stage deleteAccount = (Stage) ((Node) event.getSource()).getScene().getWindow();
         deleteAccount.close();
     }

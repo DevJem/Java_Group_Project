@@ -47,6 +47,9 @@ public class AddAccountController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
+    
+    //TODO password gen button 
+    //TODO open pwGenerator and accept string result
 
     public void PasswordGeneratorButton() {
         //TODO open pwGenerator and accept string result

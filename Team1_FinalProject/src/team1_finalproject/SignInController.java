@@ -40,6 +40,8 @@ public class SignInController implements Initializable {
     public void CheckCredentials(ActionEvent event) throws Exception {
 
         if (tfUserEmail.getText().matches("^\\D+$") && tfUserPassword.getText().matches("^\\D+$")) {
+            txtSignInErrorMsg.setText("");
+            
             // Connect to the database
             DBInterface db = new DBInterface();
             
@@ -48,6 +50,8 @@ public class SignInController implements Initializable {
             DBInterface.setPassword(tfUserPassword.getText());
             if (!db.connect()) {
                 System.out.println("Database does not exist.");
+                txtSignInErrorMsg.setText("Database does not exist.");
+                txtSignInErrorMsg.setVisible(true); 
                 DBInterface.disconnect();
                 return;
             }
@@ -55,6 +59,9 @@ public class SignInController implements Initializable {
             // Verify password
             if (!DBQueries.checkPW(tfUserPassword.getText())) {
                 System.out.println("Password incorrect");
+                DBInterface.disconnect();
+                txtSignInErrorMsg.setText("Password Fail.");
+                txtSignInErrorMsg.setVisible(true); 
                 DBInterface.disconnect();
                 return;
             }
@@ -68,7 +75,10 @@ public class SignInController implements Initializable {
             wMain.show();
         } else {
             //display error message
-            txtSignInErrorMsg.setVisible(true);
+            if(txtSignInErrorMsg.getText().equals("")) {
+                txtSignInErrorMsg.setText("Email or Password is incorrect.");
+                txtSignInErrorMsg.setVisible(true);
+            }
         }
     }
 

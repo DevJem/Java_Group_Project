@@ -112,6 +112,8 @@ public class DBQueries {
         ResultSet rsEditAccount;
         String sAccount = "";
         try {
+            //TODO return false if account doesn't exist
+            
             // Get Account name
             rsEditAccount = stmt.executeQuery("SELECT * FROM Account WHERE `account_name` = \"" + accountName + "\";");
             while (rsEditAccount.next()) {
@@ -170,6 +172,8 @@ public class DBQueries {
         ResultSet rsDelAccount;
         String sAccount = "";
         try {
+            //TODO return false if account doesn't exist
+            
             // Get Account name
             rsDelAccount = stmt.executeQuery("SELECT * FROM Account WHERE `account_name` = \"" + accountName + "\";");
             while (rsDelAccount.next()) {

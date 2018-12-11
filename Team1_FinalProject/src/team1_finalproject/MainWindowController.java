@@ -105,6 +105,8 @@ public class MainWindowController implements Initializable {
         Stage stage;
         Parent rootBP = FXMLLoader.load(getClass().getResource("PasswordGenerator.fxml"));
         Scene sceneBP = new Scene(rootBP);
+        
+        //TODO: disable save button on password generator if opened from main screen
 
         stage = new Stage();
         stage.setScene(sceneBP);

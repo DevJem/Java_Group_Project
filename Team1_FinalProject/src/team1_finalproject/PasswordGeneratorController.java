@@ -60,6 +60,8 @@ public class PasswordGeneratorController implements Initializable {
     @FXML
     private Button btnCancel;
     @FXML
+    private Button btnSavePassword;
+    @FXML
     private Label lblGeneratedPassword;
 
     /**
@@ -115,7 +117,7 @@ public class PasswordGeneratorController implements Initializable {
             taGeneratedPassword.appendText(sGeneratedPasswords[i] + "\n");
         }
         
-        return sGeneratedPasswords[0];
+        return sGeneratedPasswords[0];  //Return first password as string
     }
     
     //TODO interface pwgen here
