@@ -1,20 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team1_finalproject;
 
+/*
+ * @Course: SDEV 450 ~ Java Enterprise
+ * @Author Name: Jenney Chang
+ * @Assignment Name: team1_finalproject
+ * @Description: PasswordGenerator Controller adds functionality for Main Window Program
+ */
+//Imports
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -28,15 +27,9 @@ import team1_finalproject.supporting_classes.PWGenerator;
 public class PasswordGeneratorController implements Initializable {
 
     //Variables
-    //TODO: clean up unused variables and imports
-    @FXML
-    private Label lblPasswordGenerator;
-    @FXML
-    private Label lblPasswordLength;
+ 
     @FXML
     private TextField tfPasswordLength;
-    @FXML
-    private Label lblCharacterSet;
     @FXML
     private CheckBox cbUpperCase;
     @FXML
@@ -48,24 +41,12 @@ public class PasswordGeneratorController implements Initializable {
     @FXML
     private CheckBox cbSelectAll;
     @FXML
-    private TextArea taGeneratedPassword;
-    @FXML
-    private Font x2;
-    @FXML
-    private Font x3;
-    @FXML
-    private Insets x4;
-    @FXML
-    private Font x1;
-    @FXML
-    private Button btnCancel;
-    @FXML
-    private Button btnSavePassword;
-    @FXML
-    private Label lblGeneratedPassword;
+    private ListView<String> listView;
 
     /**
-     * Initializes the controller class.
+     * Method: Initializer
+     * @param url
+     * @param rb 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,13 +54,21 @@ public class PasswordGeneratorController implements Initializable {
         cbSelectAll.setSelected(true);
     }
 
-    //Handle Button Click: closes popup window
+    /**
+     * Method: Close pop-up
+     * @param event
+     * @throws Exception 
+     */
     @FXML
-    public void Cancel(ActionEvent event) throws Exception {
+    public void Close(ActionEvent event) throws Exception {
         Stage passwordGen = (Stage) ((Node) event.getSource()).getScene().getWindow();
         passwordGen.close();
     }
 
+    /**
+     * Method: Handle Check box selection
+     * @return 
+     */
     public boolean CheckBox() {
         boolean checkboxesGood = false;
         if (cbSelectAll.isSelected()) {
@@ -93,8 +82,13 @@ public class PasswordGeneratorController implements Initializable {
         return checkboxesGood;
     }
     
+    /**
+     * Method: generates password
+     * @return 
+     */
+    @FXML
     public String generatePW() {
-        taGeneratedPassword.clear();
+        //taGeneratedPassword.clear();
         //TODO: validate integers for password length textfield
         if (!CheckBox()) {
             System.out.println("Invalid checkbox selection");
@@ -114,7 +108,8 @@ public class PasswordGeneratorController implements Initializable {
         
         for (int i = 0; i < PW_RUNS; i++) {
             sGeneratedPasswords[i] = pwGenerate.generate();
-            taGeneratedPassword.appendText(sGeneratedPasswords[i] + "\n");
+            listView.getItems().add(sGeneratedPasswords[i]);
+            //taGeneratedPassword.appendText(sGeneratedPasswords[i] + "\n");
         }
         
         return sGeneratedPasswords[0];  //Return first password as string
@@ -122,5 +117,17 @@ public class PasswordGeneratorController implements Initializable {
     
     //TODO interface pwgen here
     
+    /**
+     * Method: Save selected password from list view 
+     */
+    @FXML
+    public void savePassword() {
+        ObservableList<String> passwordList;
+        passwordList = listView.getSelectionModel().getSelectedItems();
+        
+        for(String pl: passwordList) {
+            
+        }
+    }
     
 }
