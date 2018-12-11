@@ -63,7 +63,7 @@
         </MenuBar>
         <ToolBar>
           <items>
-            <Button fx:id="btnOpen" contentDisplay="TOP" focusTraversable="false" mnemonicParsing="false" text="Open">
+            <Button fx:id="btnOpen" contentDisplay="TOP" focusTraversable="false" mnemonicParsing="false" onAction="#openButton" text="Open">
               <graphic>
                 <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                   <image>
@@ -72,7 +72,7 @@
                 </ImageView>
               </graphic>
             </Button>
-            <Button fx:id="btnSave" contentDisplay="TOP" focusTraversable="false" mnemonicParsing="false" text="Save">
+            <Button fx:id="btnSave" contentDisplay="TOP" focusTraversable="false" mnemonicParsing="false" onAction="#saveButton" text="Save">
               <graphic>
                 <ImageView fitHeight="21.0" fitWidth="21.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                   <image>

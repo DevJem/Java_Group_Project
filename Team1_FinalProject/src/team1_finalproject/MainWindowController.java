@@ -56,15 +56,30 @@ public class MainWindowController implements Initializable {
         columnModified.setCellValueFactory(new PropertyValueFactory<>("Modified"));
         columnNotes.setCellValueFactory(new PropertyValueFactory<>("notes"));
 
-        //populates table 
-        tableView.setItems(DBQueries.buildTableView());
+        populateTable();
 
         //TODO: Change password column to password field unless userid = currentuser
         //if (DBQueries.validateCurrentUser()) {};  //working on this
     }
 
-    //TODO save button
+    /**
+     * Method: Populates table view 
+     */
+    public void populateTable() {
+        tableView.setItems(DBQueries.buildTableView());
+    }
+    
     //TODO open button
+    @FXML
+    public void openButton(ActionEvent event) throws Exception {
+        
+    }
+    
+    //TODO save button
+    @FXML
+    public void saveButton(ActionEvent event) throws Exception {
+        
+    }
     
     /**
      * Method: Add Account pop-up
@@ -81,7 +96,8 @@ public class MainWindowController implements Initializable {
         stage.setScene(sceneBP);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
-        tableView.setItems(DBQueries.buildTableView());
+ 
+        populateTable();
     }
 
     /**
@@ -99,7 +115,7 @@ public class MainWindowController implements Initializable {
         stage.setScene(sceneBP);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
-        tableView.setItems(DBQueries.buildTableView());
+        populateTable();
     }
 
     /**
@@ -117,7 +133,7 @@ public class MainWindowController implements Initializable {
         stage.setScene(sceneBP);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
-        tableView.setItems(DBQueries.buildTableView());
+        populateTable();
     }
     
     /**
@@ -136,7 +152,7 @@ public class MainWindowController implements Initializable {
         stage.setScene(sceneBP);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
-        tableView.setItems(DBQueries.buildTableView());
+        populateTable();
     }
     
     /**
@@ -152,13 +168,24 @@ public class MainWindowController implements Initializable {
 
     //MENU ITEMS LEFT
     //method cut
+    public void cut() {
+        
+    }
     
     //method copy
+    public void copy() {
+        
+    }
     
     //method paste
+    public void paste() {
+        
+    }
     
     //method about
-    
+    public void about() {
+        
+    }
 
     //TODO menu item save
     //TODO menu item save as

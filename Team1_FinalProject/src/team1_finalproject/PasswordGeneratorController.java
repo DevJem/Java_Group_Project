@@ -15,6 +15,7 @@ import javafx.fxml.*;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import team1_finalproject.supporting_classes.PWGenerator;
@@ -36,22 +37,25 @@ public class PasswordGeneratorController implements Initializable {
     private CheckBox cbSelectAll;
     @FXML
     private ListView<String> listView;
+    ObservableList<String> passwordList;
+    private String selectedPassword;
 
     /**
      * Method: Initializer
+     *
      * @param url
-     * @param rb 
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //select all true by default
         cbSelectAll.setSelected(true);
     }
 
     /**
      * Method: Close pop-up
+     *
      * @param event
-     * @throws Exception 
+     * @throws Exception
      */
     @FXML
     public void Close(ActionEvent event) throws Exception {
@@ -61,7 +65,8 @@ public class PasswordGeneratorController implements Initializable {
 
     /**
      * Method: Handle Check box selection
-     * @return 
+     *
+     * @return
      */
     public boolean CheckBox() {
         boolean checkboxesGood = false;
@@ -75,22 +80,25 @@ public class PasswordGeneratorController implements Initializable {
         // TODO: handle the rest of the checkboxes
         return checkboxesGood;
     }
-    
+
     /**
      * Method: generates password
-     * @return 
+     *
+     * @return
      */
     @FXML
     public String generatePW() {
+        //list view properties 
         listView = new ListView<>();
-        
+        listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
         //TODO: validate integers for password length textfield
         if (!CheckBox()) {
             System.out.println("Invalid checkbox selection");
             //TODO: Alert users to pick correct checkboxes.
             return "";
         }
-        
+
         final int PW_RUNS = 10;  // Number of passwords generated
         String sGeneratedPasswords[] = new String[PW_RUNS];
         int iLength = Integer.valueOf(tfPasswordLength.getText());
@@ -98,31 +106,37 @@ public class PasswordGeneratorController implements Initializable {
         boolean bLowcase = cbLowerCase.isSelected();
         boolean bSpecial = cbSpecialCharas.isSelected();
         boolean bNums = cbNumbers.isSelected();
-        
+
         PWGenerator pwGenerate = new PWGenerator(iLength, bUpcase, bLowcase, bSpecial, bNums);
-        
+
         for (int i = 0; i < PW_RUNS; i++) {
             sGeneratedPasswords[i] = pwGenerate.generate();
-            //add generated password to list view
             listView.getItems().add(sGeneratedPasswords[i]);
+
         }
-        
         return sGeneratedPasswords[0];  //Return first password as string
     }
-    
+
     //TODO interface pwgen here
-    
     /**
-     * Method: Save selected password from list view 
+     * Method: Saves selected password
+     *
+     * @param event
+     * @throws Exception
      */
     @FXML
-    public void savePassword() {
-        ObservableList<String> passwordList;
+    public void savePassword(ActionEvent event) throws Exception {
         passwordList = listView.getSelectionModel().getSelectedItems();
-        
-        for(String pl: passwordList) {
-            
+
+        //iterate to find chosen password
+        for (String pl : passwordList) {
+            selectedPassword = pl;
         }
+
     }
-    
+
+    //get password string
+    public String getSelectedPassword() {
+        return selectedPassword;
+    }
 }

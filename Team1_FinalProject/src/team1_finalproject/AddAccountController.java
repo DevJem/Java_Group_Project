@@ -23,7 +23,8 @@ import team1_finalproject.supporting_classes.DBQueries;
 
 public class AddAccountController implements Initializable {
 
-    //Variables 
+    //Variables  
+    PasswordGeneratorController pgc = new PasswordGeneratorController();
     @FXML
     private TextField tfAccountName;
     @FXML
@@ -55,6 +56,8 @@ public class AddAccountController implements Initializable {
         stage.setScene(sceneBP);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
+
+        //set tfAccountPassword to generated password string
     }
 
     /**
@@ -68,6 +71,8 @@ public class AddAccountController implements Initializable {
         if (DBQueries.addAccount(tfAccountName.getText(), tfAccountUserID.getText(),
                 tfAccountPassword.getText(), taAccountNotes.getText())) {
             //TODO: print success
+            
+            pgc.getSelectedPassword();
         } else {
             //TODO: Inform the user that the add account failed.
         }
