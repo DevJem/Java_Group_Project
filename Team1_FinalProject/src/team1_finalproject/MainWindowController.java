@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.Clipboard;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import team1_finalproject.supporting_classes.DBQueries;
@@ -62,6 +63,9 @@ public class MainWindowController implements Initializable {
         //if (DBQueries.validateCurrentUser()) {};  //working on this
     }
 
+    //TODO save button
+    //TODO open button
+    
     /**
      * Method: Add Account pop-up
      *
@@ -115,26 +119,7 @@ public class MainWindowController implements Initializable {
         stage.showAndWait();
         tableView.setItems(DBQueries.buildTableView());
     }
-
-    /**
-     * Method: Password Generator Pop-up
-     *
-     * @param event
-     * @throws Exception
-     */
-    public void passwordGenerator(ActionEvent event) throws Exception {
-        Stage stage;
-        Parent rootBP = FXMLLoader.load(getClass().getResource("PasswordGenerator.fxml"));
-        Scene sceneBP = new Scene(rootBP);
-
-        //TODO: disable save button on password generator if opened from main screen
-        stage = new Stage();
-        stage.setScene(sceneBP);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.showAndWait();
-        tableView.setItems(DBQueries.buildTableView());
-    }
-
+    
     /**
      * Method: Settings pop-up
      *
@@ -153,7 +138,7 @@ public class MainWindowController implements Initializable {
         stage.showAndWait();
         tableView.setItems(DBQueries.buildTableView());
     }
-
+    
     /**
      * Method: Exits program
      *
@@ -165,4 +150,16 @@ public class MainWindowController implements Initializable {
         Platform.exit();
     }
 
+    //MENU ITEMS LEFT
+    //method cut
+    
+    //method copy
+    
+    //method paste
+    
+    //method about
+    
+
+    //TODO menu item save
+    //TODO menu item save as
 }

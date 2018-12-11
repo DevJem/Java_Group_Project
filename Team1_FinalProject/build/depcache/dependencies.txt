@@ -120,8 +120,11 @@ java.lang.String
 ||:team1_finalproject.AddAccountController
 javafx.scene.Node
 javafx.scene.control.TextField
+javafx.fxml.FXMLLoader
 javafx.fxml.Initializable
+javafx.stage.Modality
 javafx.stage.Stage
+java.lang.Class
 javafx.scene.control.PasswordField
 team1_finalproject.supporting_classes.DBQueries
 team1_finalproject.AddAccountController
@@ -129,6 +132,7 @@ javafx.scene.control.TextArea
 javafx.event.ActionEvent
 javafx.scene.Scene
 java.lang.Object
+javafx.scene.Parent
 java.sql.SQLException
 java.lang.Exception
 ||:team1_finalproject.DeleteAccountController
@@ -148,7 +152,6 @@ java.lang.String
 java.lang.Exception
 ||:team1_finalproject.PasswordGeneratorController
 javafx.fxml.Initializable
-java.lang.StringBuilder
 java.lang.System
 javafx.scene.control.CheckBox
 team1_finalproject.supporting_classes.PWGenerator
@@ -156,13 +159,16 @@ javafx.scene.control.TextField
 javafx.scene.Node
 java.io.PrintStream
 team1_finalproject.PasswordGeneratorController
+javafx.scene.control.ListView
+javafx.collections.ObservableList
 javafx.event.ActionEvent
 [Ljava.lang.String;
-javafx.scene.control.TextArea
+java.util.Iterator
 java.lang.Exception
+javafx.scene.control.MultipleSelectionModel
 java.lang.Integer
-java.lang.Object
 javafx.stage.Stage
+java.lang.Object
 javafx.scene.Scene
 java.lang.String
 ||:team1_finalproject.supporting_classes.DBFileOperations

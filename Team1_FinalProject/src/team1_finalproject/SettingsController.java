@@ -1,10 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team1_finalproject;
 
+/*
+ * @Course: SDEV 450 ~ Java Enterprise
+ * @Author Name: Jenney Chang
+ * @Assignment Name: team1_finalproject
+ * @Description: Settings Controller adds functionality for settings 
+ */
+
+//Imports
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -19,11 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author Jay
- */
+
 public class SettingsController implements Initializable {
 
     @FXML

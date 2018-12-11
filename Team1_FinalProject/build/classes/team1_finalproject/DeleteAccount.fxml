@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -14,11 +8,10 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane id="BorderPane" prefHeight="320.0" prefWidth="537.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team1_finalproject.DeleteAccountController">
+<BorderPane id="BorderPane" prefHeight="289.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team1_finalproject.DeleteAccountController">
   <bottom>
     <HBox alignment="TOP_CENTER" prefHeight="85.0" prefWidth="537.0">
       <children>
@@ -30,7 +23,7 @@
             <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
           </HBox.margin>
         </Button>
-        <Button fx:id="btnCancel" font="$x1" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Close" textFill="WHITE">
+        <Button fx:id="btnCancel" font="$x1" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#Close" prefHeight="30.0" prefWidth="160.0" text="Close" textFill="WHITE">
           <HBox.margin>
             <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
           </HBox.margin>
@@ -43,14 +36,16 @@
       <children>
         <TextField fx:id="tfDeleteAccountName" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#deleteAccount" prefHeight="40.0" prefWidth="450.0" promptText="Account Name">
           <VBox.margin>
-            <Insets bottom="5.0" left="10.0" right="10.0" top="20.0" fx:id="x2" />
+            <Insets bottom="5.0" left="10.0" right="10.0" top="25.0" fx:id="x2" />
           </VBox.margin>
         </TextField>
-        <HBox alignment="CENTER" />
-        <Text fx:id="txtDeleteNotice" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Account does not exist." visible="true">
+        <Text fx:id="txtDeleteNotice" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Account does not exist." visible="true" wrappingWidth="436.41162109375">
           <font>
             <Font name="SansSerif Regular" size="13.0" />
           </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
         </Text>
       </children>
     </VBox>

@@ -12,22 +12,16 @@ import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import team1_finalproject.supporting_classes.PWGenerator;
 
 public class PasswordGeneratorController implements Initializable {
 
     //Variables
- 
     @FXML
     private TextField tfPasswordLength;
     @FXML
@@ -88,7 +82,8 @@ public class PasswordGeneratorController implements Initializable {
      */
     @FXML
     public String generatePW() {
-        //taGeneratedPassword.clear();
+        listView = new ListView<>();
+        
         //TODO: validate integers for password length textfield
         if (!CheckBox()) {
             System.out.println("Invalid checkbox selection");
@@ -108,8 +103,8 @@ public class PasswordGeneratorController implements Initializable {
         
         for (int i = 0; i < PW_RUNS; i++) {
             sGeneratedPasswords[i] = pwGenerate.generate();
+            //add generated password to list view
             listView.getItems().add(sGeneratedPasswords[i]);
-            //taGeneratedPassword.appendText(sGeneratedPasswords[i] + "\n");
         }
         
         return sGeneratedPasswords[0];  //Return first password as string
