@@ -63,6 +63,7 @@ public class SignInController implements Initializable {
                 txtSignInErrorMsg.setText("Password Fail.");
                 txtSignInErrorMsg.setVisible(true); 
                 DBInterface.disconnect();
+                tfUserPassword.clear();
                 return;
             }
 

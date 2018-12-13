@@ -58,12 +58,14 @@ public class CreateAccountController implements Initializable {
         if (tfNewUserEmail.getText().equals("") || tfNewUserPassword.getText().equals("")
                 || tfNewUserPassword2.getText().equals("")) {
             errorMessage("Invalid text entry: one or more fields are empty");
+            return;
         }
         //Check if passwords match
         if (!tfNewUserPassword.getText().equals(tfNewUserPassword2.getText())) {
             System.out.println("Passwords don't match");
             //Display Error message
             errorMessage("Invalid Password: passwords don't match.");
+            return;
         }
 
         if (tfNewUserEmail.getText().matches("^\\D+$") && tfNewUserPassword.getText().matches("^\\D+$")) {
@@ -74,7 +76,10 @@ public class CreateAccountController implements Initializable {
             // send tfUserEmail to DBInterface
             DBInterface.setName(tfNewUserEmail.getText());
             DBInterface.setPassword(tfNewUserPassword.getText());
-            db.createDB();
+            if (!db.createDB()) {
+                errorMessage("Email address unavailable.");
+                return;
+            }
 
             // Change scene after successful account creation
             Parent rootBP = FXMLLoader.load(getClass().getResource("SignIn.fxml"));

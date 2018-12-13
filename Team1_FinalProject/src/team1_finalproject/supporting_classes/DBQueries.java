@@ -178,7 +178,11 @@ public class DBQueries {
             rsDelAccount = stmt.executeQuery("SELECT * FROM Account WHERE `account_name` = \"" + accountName + "\";");
             while (rsDelAccount.next()) {
                 sAccount = rsDelAccount.getString("account_name");
-                System.out.println("Account is " + sAccount);
+            }
+            
+            // Don't try to delete non-existant accounts
+            if (sAccount.equals("")) {
+                return false;
             }
 
             // Delete the account
@@ -224,6 +228,10 @@ public class DBQueries {
     public static boolean validateCurrentUser() {
 
         return true;
+    }
+    
+    public void saveSettings() {
+        
     }
 }
 

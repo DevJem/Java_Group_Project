@@ -14,7 +14,7 @@ package team1_finalproject.supporting_classes;
 //Begin Subclass PWGenerator
 public class PWGenerator {
     
-    private boolean bUpcase = false;     // get from UI
+    private boolean bUpcase = true;     // get from UI
     private boolean bLowcase = true;    // get from UI
     private boolean bSpecial = true;    // get from UI
     private boolean bNumber = true;     // get from UI
