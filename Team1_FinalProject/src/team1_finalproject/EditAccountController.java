@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.Clipboard;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import team1_finalproject.supporting_classes.DBQueries;
@@ -68,6 +69,10 @@ public class EditAccountController implements Initializable {
         stage.setScene(sceneBP);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
+        
+        //set generated password string
+        String pw = Clipboard.getSystemClipboard().getString();
+        tfEditAccountPassword.setText(pw);
     }
 
     /**

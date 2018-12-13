@@ -131,11 +131,7 @@ public class PasswordGeneratorController implements Initializable {
         for(String pl: passwordList) {
             selectedPassword = pl;
         }
-        
-        System.out.println(selectedPassword);
-        //aac.setTfAccountPassword(selectedPassword);
-        //aac.setPassword(selectedPassword);
-        
+                
         ClipboardContent content = new ClipboardContent();
         content.putString(selectedPassword);
         systemClipboard.setContent(content);
@@ -145,10 +141,4 @@ public class PasswordGeneratorController implements Initializable {
     }
 
 
-//    public String getSelection() {
-//        String selectedpw = selectedPassword;
-//        System.out.println(selectedpw);
-//        return selectedpw;
-//   
-//    }
 }

@@ -9,6 +9,7 @@ javafx.stage.Stage
 javafx.scene.control.PasswordField
 java.lang.Class
 team1_finalproject.supporting_classes.DBQueries
+javafx.scene.input.Clipboard
 javafx.scene.control.TextArea
 javafx.event.ActionEvent
 javafx.scene.Scene
@@ -126,11 +127,9 @@ java.lang.String
 ||:team1_finalproject.AddAccountController
 javafx.fxml.Initializable
 java.sql.SQLException
-java.lang.System
 java.lang.Class
 javafx.scene.control.TextField
 javafx.scene.Node
-java.io.PrintStream
 javafx.stage.Modality
 javafx.event.ActionEvent
 javafx.fxml.FXMLLoader
@@ -141,8 +140,8 @@ javafx.scene.control.PasswordField
 java.lang.Exception
 team1_finalproject.AddAccountController
 javafx.scene.Parent
-javafx.stage.Stage
 java.lang.Object
+javafx.stage.Stage
 javafx.scene.Scene
 ||:team1_finalproject.DeleteAccountController
 java.lang.StringBuilder

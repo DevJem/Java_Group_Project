@@ -59,7 +59,7 @@ public class AddAccountController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
 
-        //set tfAccountPassword to generated password string
+        //set generated password string
         String pw = Clipboard.getSystemClipboard().getString();
         tfAccountPassword.setText(pw);
         
