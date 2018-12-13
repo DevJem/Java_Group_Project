@@ -13,13 +13,11 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.*;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import team1_finalproject.supporting_classes.DBQueries;
@@ -180,16 +178,15 @@ public class MainWindowController implements Initializable {
     //method copy
     @FXML
     public void copy() {
-        if (systemClipboard.hasString()) {
-            String selectedText = systemClipboard.getString();
-            content.putString(selectedText);
-            systemClipboard.setContent(content);
-        }
+        //StringSelection selection = new StringSelection();
     }
 
     //method paste
-    public void paste() {
-
+    public String paste() {
+        String pasteText = "";
+        
+        //Transferable contents
+        return pasteText;
     }
 
     //method about
