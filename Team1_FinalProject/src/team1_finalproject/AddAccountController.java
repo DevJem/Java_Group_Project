@@ -17,14 +17,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.Clipboard;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import team1_finalproject.supporting_classes.DBQueries;
 
 public class AddAccountController implements Initializable {
 
-    //Variables  
-    PasswordGeneratorController pgc = new PasswordGeneratorController();
+    //Variables
+    //PasswordGeneratorController pgc = new PasswordGeneratorController();
     @FXML
     private TextField tfAccountName;
     @FXML
@@ -40,7 +41,8 @@ public class AddAccountController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
-
+    
+    
     /**
      * Method: Opens password generator
      *
@@ -58,6 +60,9 @@ public class AddAccountController implements Initializable {
         stage.showAndWait();
 
         //set tfAccountPassword to generated password string
+        String pw = Clipboard.getSystemClipboard().getString();
+        tfAccountPassword.setText(pw);
+        
     }
 
     /**
@@ -68,11 +73,11 @@ public class AddAccountController implements Initializable {
      */
     @FXML
     public void AddAccountButton(ActionEvent event) throws SQLException {
+        
         if (DBQueries.addAccount(tfAccountName.getText(), tfAccountUserID.getText(),
                 tfAccountPassword.getText(), taAccountNotes.getText())) {
             //TODO: print success
             
-            pgc.getSelectedPassword();
         } else {
             //TODO: Inform the user that the add account failed.
         }

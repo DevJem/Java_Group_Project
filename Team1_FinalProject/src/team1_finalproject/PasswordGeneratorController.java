@@ -15,16 +15,18 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Node;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.*;
 import javafx.stage.Stage;
 import team1_finalproject.supporting_classes.PWGenerator;
 
 public class PasswordGeneratorController implements Initializable {
 
     //Variables
+    AddAccountController aac = new AddAccountController();
+    ObservableList<String> passwordList;
+    @FXML
+    private ListView<String> listView = new ListView<>();
     @FXML
     private TextField tfPasswordLength;
     @FXML
@@ -37,10 +39,7 @@ public class PasswordGeneratorController implements Initializable {
     private CheckBox cbNumbers;
     @FXML
     private CheckBox cbSelectAll;
-    @FXML
-    private ListView<String> listView = new ListView<>();;
-    ObservableList<String> passwordList;
-    private String selectedPassword;
+    
 
     /**
      * Method: Initializer
@@ -85,13 +84,10 @@ public class PasswordGeneratorController implements Initializable {
 
     /**
      * Method: generates password
-     *
-     * @return
      */
     @FXML
     public void generatePW() {
         //list view properties 
-//        listView = new ListView<>();
         listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         //TODO: validate integers for password length textfield
@@ -113,7 +109,6 @@ public class PasswordGeneratorController implements Initializable {
 
         for (int i = 0; i < PW_RUNS; i++) {
             alGeneratedPasswords.add(pwGenerate.generate());
-//            passwordList.add(sGeneratedPasswords[i]);
         }
         passwordList = FXCollections.observableArrayList(alGeneratedPasswords);
         listView.setItems(passwordList);
@@ -128,17 +123,32 @@ public class PasswordGeneratorController implements Initializable {
      */
     @FXML
     public void savePassword(ActionEvent event) throws Exception {
+        Clipboard systemClipboard = Clipboard.getSystemClipboard();
+        String selectedPassword = "";
         passwordList = listView.getSelectionModel().getSelectedItems();
 
         //iterate to find chosen password
-        for (String pl : passwordList) {
+        for(String pl: passwordList) {
             selectedPassword = pl;
         }
-
+        
+        System.out.println(selectedPassword);
+        //aac.setTfAccountPassword(selectedPassword);
+        //aac.setPassword(selectedPassword);
+        
+        ClipboardContent content = new ClipboardContent();
+        content.putString(selectedPassword);
+        systemClipboard.setContent(content);
+        
+        Stage passwordGen = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        passwordGen.close();
     }
 
-    //get password string
-    public String getSelectedPassword() {
-        return selectedPassword;
-    }
+
+//    public String getSelection() {
+//        String selectedpw = selectedPassword;
+//        System.out.println(selectedpw);
+//        return selectedpw;
+//   
+//    }
 }
