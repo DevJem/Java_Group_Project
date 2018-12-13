@@ -112,7 +112,6 @@ public class PasswordGeneratorController implements Initializable {
         for (int i = 0; i < PW_RUNS; i++) {
             sGeneratedPasswords[i] = pwGenerate.generate();
             listView.getItems().add(sGeneratedPasswords[i]);
-
         }
         return sGeneratedPasswords[0];  //Return first password as string
     }
