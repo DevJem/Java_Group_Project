@@ -8,7 +8,9 @@ package team1_finalproject;
  */
 //Imports
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -36,7 +38,7 @@ public class PasswordGeneratorController implements Initializable {
     @FXML
     private CheckBox cbSelectAll;
     @FXML
-    private ListView<String> listView;
+    private ListView<String> listView = new ListView<>();;
     ObservableList<String> passwordList;
     private String selectedPassword;
 
@@ -87,20 +89,20 @@ public class PasswordGeneratorController implements Initializable {
      * @return
      */
     @FXML
-    public String generatePW() {
+    public void generatePW() {
         //list view properties 
-        listView = new ListView<>();
+//        listView = new ListView<>();
         listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         //TODO: validate integers for password length textfield
         if (!CheckBox()) {
             System.out.println("Invalid checkbox selection");
             //TODO: Alert users to pick correct checkboxes.
-            return "";
+            return;
         }
 
         final int PW_RUNS = 10;  // Number of passwords generated
-        String sGeneratedPasswords[] = new String[PW_RUNS];
+        ArrayList<String> alGeneratedPasswords = new ArrayList<>();
         int iLength = Integer.valueOf(tfPasswordLength.getText());
         boolean bUpcase = cbUpperCase.isSelected();
         boolean bLowcase = cbLowerCase.isSelected();
@@ -110,11 +112,11 @@ public class PasswordGeneratorController implements Initializable {
         PWGenerator pwGenerate = new PWGenerator(iLength, bUpcase, bLowcase, bSpecial, bNums);
 
         for (int i = 0; i < PW_RUNS; i++) {
-            sGeneratedPasswords[i] = pwGenerate.generate();
-            listView.getItems().add(sGeneratedPasswords[i]);
-
+            alGeneratedPasswords.add(pwGenerate.generate());
+//            passwordList.add(sGeneratedPasswords[i]);
         }
-        return sGeneratedPasswords[0];  //Return first password as string
+        passwordList = FXCollections.observableArrayList(alGeneratedPasswords);
+        listView.setItems(passwordList);
     }
 
     //TODO interface pwgen here
