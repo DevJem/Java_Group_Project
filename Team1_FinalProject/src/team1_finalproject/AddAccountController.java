@@ -25,7 +25,6 @@ import team1_finalproject.supporting_classes.DBQueries;
 public class AddAccountController implements Initializable {
 
     //Variables
-    //PasswordGeneratorController pgc = new PasswordGeneratorController();
     @FXML
     private TextField tfAccountName;
     @FXML

@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane id="BorderPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team1_finalproject.MainWindowController">
+<BorderPane id="BorderPane" prefHeight="502.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team1_finalproject.MainWindowController">
   <bottom>
-    <HBox prefHeight="14.0" prefWidth="600.0" />
+    <HBox prefHeight="14.0" prefWidth="795.0" />
   </bottom>
   <center>
     <HBox prefHeight="305.0" prefWidth="600.0">
@@ -26,9 +26,9 @@
             <TableColumn fx:id="columnAccount" prefWidth="92.0" text="Account" />
             <TableColumn fx:id="columnUserID" maxWidth="5000.0" minWidth="10.0" prefWidth="94.0" text="User ID" />
             <TableColumn fx:id="columnPassword" maxWidth="5000.0" minWidth="10.0" prefWidth="114.0" sortable="false" text="Password" />
-            <TableColumn fx:id="columnCreated" maxWidth="5000.0" minWidth="10.0" prefWidth="67.0" text="Created" />
-            <TableColumn fx:id="columnModified" prefWidth="74.0" text="Modified" />
-            <TableColumn fx:id="columnNotes" maxWidth="5000.0" minWidth="3.0" prefWidth="149.0" sortable="false" text="Notes" />
+            <TableColumn fx:id="columnCreated" maxWidth="5000.0" minWidth="10.0" prefWidth="152.0" text="Created" />
+            <TableColumn fx:id="columnModified" prefWidth="157.0" text="Modified" />
+            <TableColumn fx:id="columnNotes" maxWidth="5000.0" minWidth="3.0" prefWidth="183.0" sortable="false" text="Notes" />
           </columns>
         </TableView>
       </children>
@@ -49,14 +49,14 @@
             </Menu>
             <Menu fx:id="miEdit" mnemonicParsing="false" text="Edit">
               <items>
-                <MenuItem fx:id="miCut" mnemonicParsing="false" text="Cut" />
-                <MenuItem fx:id="miCopy" mnemonicParsing="false" text="Copy" />
-                <MenuItem fx:id="miPaste" mnemonicParsing="false" text="Paste" />
+                <MenuItem fx:id="miCut" mnemonicParsing="false" onAction="#cut" text="Cut" />
+                <MenuItem fx:id="miCopy" mnemonicParsing="false" onAction="#copy" text="Copy" />
+                <MenuItem fx:id="miPaste" mnemonicParsing="false" onAction="#paste" text="Paste" />
               </items>
             </Menu>
             <Menu fx:id="Help" mnemonicParsing="false" text="Help">
               <items>
-                <MenuItem fx:id="miAbout" mnemonicParsing="false" text="About" />
+                <MenuItem fx:id="miAbout" mnemonicParsing="false" onAction="#about" text="About" />
               </items>
             </Menu>
           </menus>

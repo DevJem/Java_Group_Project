@@ -7,18 +7,19 @@ package team1_finalproject;
  * @Description: Controller adds functionality for Main Window Program
  */
 //Imports
-//import com.mysql.cj.util.StringUtils;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import team1_finalproject.supporting_classes.DBQueries;
@@ -26,6 +27,9 @@ import team1_finalproject.supporting_classes.DBQueries;
 public class MainWindowController implements Initializable {
 
     //Variables
+    Clipboard systemClipboard = Clipboard.getSystemClipboard();
+    ClipboardContent content = new ClipboardContent();
+
     @FXML
     private TableView<Main_TableAccounts> tableView;
     @FXML
@@ -40,8 +44,6 @@ public class MainWindowController implements Initializable {
     private TableColumn<Main_TableAccounts, Timestamp> columnModified;
     @FXML
     private TableColumn<Main_TableAccounts, String> columnNotes;
-
-    Clipboard systemClipboard = Clipboard.getSystemClipboard();
 
     /**
      * Method: Initializes
@@ -178,11 +180,11 @@ public class MainWindowController implements Initializable {
     //method copy
     @FXML
     public void copy() {
-        String selectedText = "";
-
-        ClipboardContent content = new ClipboardContent();
-        content.putString(selectedText);
-        systemClipboard.setContent(content);
+        if (systemClipboard.hasString()) {
+            String selectedText = systemClipboard.getString();
+            content.putString(selectedText);
+            systemClipboard.setContent(content);
+        }
     }
 
     //method paste
@@ -191,8 +193,16 @@ public class MainWindowController implements Initializable {
     }
 
     //method about
-    public void about() {
+    @FXML
+    public void about(ActionEvent event) throws Exception{
+        Stage stage;
+        Parent rootBP = FXMLLoader.load(getClass().getResource("About.fxml"));
+        Scene sceneBP = new Scene(rootBP);
 
+        stage = new Stage();
+        stage.setScene(sceneBP);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
     }
 
     //TODO menu item save

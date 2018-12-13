@@ -143,6 +143,14 @@ javafx.scene.Parent
 java.lang.Object
 javafx.stage.Stage
 javafx.scene.Scene
+||:team1_finalproject.AboutController
+java.lang.Object
+javafx.stage.Stage
+javafx.fxml.Initializable
+javafx.scene.Node
+javafx.scene.Scene
+team1_finalproject.AboutController
+javafx.event.ActionEvent
 ||:team1_finalproject.DeleteAccountController
 java.lang.StringBuilder
 javafx.scene.Node
