@@ -17,7 +17,7 @@
   <bottom>
     <HBox alignment="TOP_CENTER" prefHeight="91.0" prefWidth="537.0">
       <children>
-        <Button fx:id="btnSaveSettings" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" text="Save" textFill="WHITE">
+        <Button fx:id="btnSaveSettings" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#saveButton" prefHeight="30.0" prefWidth="130.0" text="Save" textFill="WHITE">
           <font>
             <Font size="15.0" fx:id="x1" />
           </font>

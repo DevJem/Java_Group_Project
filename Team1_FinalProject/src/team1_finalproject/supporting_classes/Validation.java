@@ -8,22 +8,43 @@ package team1_finalproject.supporting_classes;
  * @Subclass Validation Description:
  */
 //Imports
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 //Begin Subclass Validation
 public class Validation {
 
-    public boolean validEmail(TextField email, Text errorMsg) {
-        if (email.getText().matches("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+")) {
+    /**
+     * Method: Checks if email is valid 
+     * @param email
+     * @param msg
+     * @return 
+     */
+    public boolean validEmail(TextField email, Text msg) {
+        if (!email.getText().matches("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+")) {
+            msg.setText("Invalid Email: Please try again.");
+            return false;
+        } else {
             return true;
         }
-        errorMsg.setText("Invalid Email. Please try again.");
-        return false;
     }
-    
-    public boolean validPassword(TextField pw) {
-        //if()
-        return false;
+
+    /**
+     * Method: Checks password length & if passwords match
+     * @param pw
+     * @param pw2
+     * @param msg
+     * @return 
+     */
+    public boolean validPassword(PasswordField pw, PasswordField pw2, Text msg) {
+        if (pw.getLength() != 6 && pw2.getLength() != 6) {
+            msg.setText("Invalid Password: must be max 6 characters");
+            if (!pw.getText().equals(pw2.getText())) {
+                msg.setText("Invalid Password: passwords do not match");
+                return false;
+            }
+        } 
+        return true;
     }
 } //End Subclass Validation
