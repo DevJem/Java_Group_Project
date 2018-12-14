@@ -25,7 +25,6 @@ import team1_finalproject.supporting_classes.*;
 public class CreateAccountController implements Initializable {
 
     //Variables
-    Validation valid = new Validation();
     @FXML
     private TextField tfNewUserEmail;
     @FXML
@@ -67,8 +66,8 @@ public class CreateAccountController implements Initializable {
 
         //#2 Check if email is valid & password length
         //if email is valid & password length is correct, then do passwords match?
-        if (valid.validEmail(tfNewUserEmail, txtErrorMsg)
-                && valid.validPassword(tfNewUserPassword, tfNewUserPassword2, txtErrorMsg)) {
+        if (Validation.validEmail(tfNewUserEmail, txtErrorMsg)
+                && Validation.validPasswords(tfNewUserPassword, tfNewUserPassword2, txtErrorMsg)) {
             // send tfUserEmail to DBInterface
             DBInterface.setName(tfNewUserEmail.getText());
             DBInterface.setPassword(tfNewUserPassword.getText());
@@ -85,26 +84,6 @@ public class CreateAccountController implements Initializable {
             wSignIn.setScene(sceneBP);
             wSignIn.show();
         }
-
-//        if (tfNewUserEmail.getText().matches("^\\D+$") && tfNewUserPassword.getText().matches("^\\D+$")) {
-//
-//            // send tfUserEmail to DBInterface
-//            DBInterface.setName(tfNewUserEmail.getText());
-//            DBInterface.setPassword(tfNewUserPassword.getText());
-//            if (!db.createDB()) {
-//                errorMessage("Email address unavailable.");
-//                return;
-//            }
-//
-//            // Change scene after successful account creation
-//            Parent rootBP = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
-//            Scene sceneBP = new Scene(rootBP);
-//
-//            Stage wSignIn = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//            wSignIn.setScene(sceneBP);
-//            wSignIn.show();
-//        }
-
     }
 
     /**
@@ -113,7 +92,7 @@ public class CreateAccountController implements Initializable {
      * @param error
      */
     @FXML
-    public void errorMessage(String error) {
+    private void errorMessage(String error) {
         txtErrorMsg.setText(error);
         txtErrorMsg.setVisible(true);
     }

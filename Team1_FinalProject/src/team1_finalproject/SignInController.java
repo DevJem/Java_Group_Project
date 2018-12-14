@@ -31,8 +31,9 @@ public class SignInController implements Initializable {
 
     /**
      * Method: Initialize
+     *
      * @param url
-     * @param rb 
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -42,24 +43,30 @@ public class SignInController implements Initializable {
 
     /**
      * Method: Sign in event
+     *
      * @param event
-     * @throws Exception 
+     * @throws Exception
      */
     public void CheckCredentials(ActionEvent event) throws Exception {
 
-        if (tfUserEmail.getText().matches("^\\D+$") && tfUserPassword.getText().matches("^\\D+$")) {
-            txtSignInErrorMsg.setText("");
-            
-            // Connect to the database
+        //#1 If Email or Password is missing throw error
+        if (tfUserEmail.getText().equals("") || tfUserPassword.getText().equals("")) {
+            errorMessage("Invalid entry: textfields cannot be empty");
+            return;
+        }
+        
+        //#2 Check if valid email & password
+        if (Validation.validEmail(tfUserEmail, txtSignInErrorMsg) && 
+                Validation.validPassword(tfUserPassword, txtSignInErrorMsg)) {
+
+            // Connect to the database & send tfUserEmail to DBInterface
             DBInterface db = new DBInterface();
-            
-            // send tfUserEmail to DBInterface
+
             DBInterface.setName(tfUserEmail.getText());
             DBInterface.setPassword(tfUserPassword.getText());
             if (!db.connect()) {
                 System.out.println("Database does not exist.");
-                txtSignInErrorMsg.setText("Database does not exist.");
-                txtSignInErrorMsg.setVisible(true); 
+                errorMessage("Database does not exist.");
                 DBInterface.disconnect();
                 return;
             }
@@ -68,8 +75,7 @@ public class SignInController implements Initializable {
             if (!DBQueries.checkPW(tfUserPassword.getText())) {
                 System.out.println("Password incorrect");
                 DBInterface.disconnect();
-                txtSignInErrorMsg.setText("Password Fail.");
-                txtSignInErrorMsg.setVisible(true); 
+                errorMessage("Password incorrect");
                 DBInterface.disconnect();
                 tfUserPassword.clear();
                 return;
@@ -84,17 +90,26 @@ public class SignInController implements Initializable {
             wMain.show();
         } else {
             //display error message
-            if(txtSignInErrorMsg.getText().equals("")) {
-                txtSignInErrorMsg.setText("Email or Password is incorrect.");
-                txtSignInErrorMsg.setVisible(true);
-            }
+            errorMessage("Email or Password is incorrect");
         }
     }
 
     /**
+     * Method: Error Message
+     *
+     * @param error
+     */
+    @FXML
+    private void errorMessage(String error) {
+        txtSignInErrorMsg.setText(error);
+        txtSignInErrorMsg.setVisible(true);
+    }
+
+    /**
      * Method: Loads Create Account window
+     *
      * @param event
-     * @throws Exception 
+     * @throws Exception
      */
     @FXML
     public void LoadNewAccountScene(ActionEvent event) throws Exception {

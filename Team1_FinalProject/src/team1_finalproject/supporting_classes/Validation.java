@@ -21,7 +21,8 @@ public class Validation {
      * @param msg
      * @return 
      */
-    public boolean validEmail(TextField email, Text msg) {
+    
+    public static boolean validEmail(TextField email, Text msg) {
         if (!email.getText().matches("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+")) {
             msg.setText("Invalid Email: Please try again.");
             return false;
@@ -37,7 +38,7 @@ public class Validation {
      * @param msg
      * @return 
      */
-    public boolean validPassword(PasswordField pw, PasswordField pw2, Text msg) {
+    public static boolean validPasswords(PasswordField pw, PasswordField pw2, Text msg) {
         if (pw.getLength() < 6 || pw2.getLength() < 6) {
             msg.setText("Invalid Password: must be 6 characters minimum");
             return false;
@@ -47,5 +48,20 @@ public class Validation {
             return false;
         }
         return true;
+    }
+    
+    /**
+     * Method: Check password length
+     * @param pw
+     * @param msg
+     * @return 
+     */
+    public static boolean validPassword(PasswordField pw, Text msg) {
+        if (pw.getLength() < 6) {
+            msg.setText("Invalid Password: must be 6 characters minimum");
+            return false;
+        } else {
+            return true;
+        }
     }
 } //End Subclass Validation
