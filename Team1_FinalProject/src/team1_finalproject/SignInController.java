@@ -1,10 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team1_finalproject;
 
+/*
+ * @Course: SDEV 450 ~ Java Enterprise
+ * @Author Name: Jenney Chang
+ * @Assignment Name: team1_finalproject
+ * @Description: Controller adds functionality for Sign in
+ */
+//Imports
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -28,7 +30,9 @@ public class SignInController implements Initializable {
     private PasswordField tfUserPassword;
 
     /**
-     * Initializes the controller class.
+     * Method: Initialize
+     * @param url
+     * @param rb 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -36,7 +40,11 @@ public class SignInController implements Initializable {
         txtSignInErrorMsg.setVisible(false);
     }
 
-    //user sign in--check for user credentials in database & access main window OR display error
+    /**
+     * Method: Sign in event
+     * @param event
+     * @throws Exception 
+     */
     public void CheckCredentials(ActionEvent event) throws Exception {
 
         if (tfUserEmail.getText().matches("^\\D+$") && tfUserPassword.getText().matches("^\\D+$")) {
@@ -83,6 +91,11 @@ public class SignInController implements Initializable {
         }
     }
 
+    /**
+     * Method: Loads Create Account window
+     * @param event
+     * @throws Exception 
+     */
     @FXML
     public void LoadNewAccountScene(ActionEvent event) throws Exception {
         //Changes scene to create account
