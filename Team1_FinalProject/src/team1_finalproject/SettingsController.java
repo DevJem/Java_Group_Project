@@ -36,17 +36,24 @@ public class SettingsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Add items to Choice box
+        choicebNotifyEmail.getItems().clear();
         choicebNotifyEmail.getItems().addAll("Yes", "No");
         
         String sAdmin = DBQueries.bIsAdmin() ? "Administrator" : "Local User";
         tfUserStatus.setText(sAdmin);
     }
 
+    //TODO: Save Setting config to database
+    @FXML
+    public void saveButton(ActionEvent event) throws Exception {
+        
+    }
+    
     @FXML
     public void getChoice(ChoiceBox<String> cb) {
         choice = choicebNotifyEmail.getValue();
         
-        //can choose to return the bool return value
+        //TODO: ?? can choose to return the bool return value
 //        if(choice.equals("Yes")){
 //            return true;
 //        } else {
