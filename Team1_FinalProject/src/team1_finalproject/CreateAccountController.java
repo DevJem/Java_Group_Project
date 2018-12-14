@@ -36,8 +36,9 @@ public class CreateAccountController implements Initializable {
 
     /**
      * Method: Initialize
+     *
      * @param url
-     * @param rb 
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -53,12 +54,25 @@ public class CreateAccountController implements Initializable {
      */
     @FXML
     public void CreateAccount(ActionEvent event) throws Exception {
+        // Connect to the database
+        DBInterface db = new DBInterface();
 
-        //Check if text fields are empty
+        //#1 Check if text fields are empty
         if (tfNewUserEmail.getText().equals("") || tfNewUserPassword.getText().equals("")
                 || tfNewUserPassword2.getText().equals("")) {
             errorMessage("Invalid text entry: one or more fields are empty");
             return;
+        }
+
+        //#2 Check if email is valid & password length
+        //if email is valid & password length is correct, then do passwords match?
+        if (tfNewUserEmail.getText().matches("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+")) {
+        }
+
+        //Check password length
+        if (tfNewUserPassword.getLength() == 6
+                && tfNewUserPassword.getText().equals(tfNewUserPassword2.getText())) {
+
         }
         //Check if passwords match
         if (!tfNewUserPassword.getText().equals(tfNewUserPassword2.getText())) {
@@ -69,9 +83,6 @@ public class CreateAccountController implements Initializable {
         }
 
         if (tfNewUserEmail.getText().matches("^\\D+$") && tfNewUserPassword.getText().matches("^\\D+$")) {
-
-            // Connect to the database
-            DBInterface db = new DBInterface();
 
             // send tfUserEmail to DBInterface
             DBInterface.setName(tfNewUserEmail.getText());
