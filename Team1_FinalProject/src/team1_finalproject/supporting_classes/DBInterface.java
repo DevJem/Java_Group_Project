@@ -79,7 +79,7 @@ public class DBInterface {
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "root");
             create = conn.createStatement();
-            create.executeUpdate("CREATE DATABASE " + sName);
+            create.executeUpdate("CREATE DATABASE `" + sName + "`;");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + sName, "root", "root");
             DBCreate newDB = new DBCreate(conn);
             

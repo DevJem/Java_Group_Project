@@ -71,9 +71,9 @@ public class DBCreate {
     }
 
     boolean addUser(String sName, String sPassword) {
-        String sql = "INSERT INTO " + sName + ".`User` (`program_username`, "
+        String sql = "INSERT INTO `" + sName + "`.`User` (`program_username`, "
                 + "`program_password`, `administrator`) VALUES "
-                + "(\"" + sName + "\", \"" + sPassword + "\", 1);";
+                + "('" + sName + "', \"" + sPassword + "\", 1);";
         try {
             stmt.executeUpdate(sql);
         } catch (SQLException e) {

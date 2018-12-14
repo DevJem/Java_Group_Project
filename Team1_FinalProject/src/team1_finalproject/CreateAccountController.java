@@ -68,7 +68,7 @@ public class CreateAccountController implements Initializable {
         //#2 Check if email is valid & password length
         //if email is valid & password length is correct, then do passwords match?
         if (valid.validEmail(tfNewUserEmail, txtErrorMsg)
-                && valid.validPassword(tfNewUserPassword, tfNewUserPassword2, txtErrorMsg) == true) {
+                && valid.validPassword(tfNewUserPassword, tfNewUserPassword2, txtErrorMsg)) {
             // send tfUserEmail to DBInterface
             DBInterface.setName(tfNewUserEmail.getText());
             DBInterface.setPassword(tfNewUserPassword.getText());

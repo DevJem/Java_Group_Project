@@ -38,13 +38,14 @@ public class Validation {
      * @return 
      */
     public boolean validPassword(PasswordField pw, PasswordField pw2, Text msg) {
-        if (pw.getLength() != 6 && pw2.getLength() != 6) {
-            msg.setText("Invalid Password: must be max 6 characters");
-            if (!pw.getText().equals(pw2.getText())) {
-                msg.setText("Invalid Password: passwords do not match");
-                return false;
-            }
+        if (pw.getLength() < 6 || pw2.getLength() < 6) {
+            msg.setText("Invalid Password: must be 6 characters minimum");
+            return false;
         } 
+        if (!pw.getText().equals(pw2.getText())) {
+            msg.setText("Invalid Password: passwords do not match");
+            return false;
+        }
         return true;
     }
 } //End Subclass Validation
