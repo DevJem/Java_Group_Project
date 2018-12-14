@@ -157,6 +157,7 @@ public class DBQueries {
             System.out.println("Account edited!");
 
         } catch (SQLException sqle) {
+            // Account doesn't exist
             System.out.println("Edit Account failed.\n" + sqle);
             return false;
         }
@@ -166,14 +167,13 @@ public class DBQueries {
     /**
      * Delete account
      * @param accountName
+     * @return 
      */
     public static boolean deleteAccount(String accountName) {
         // delete account
         ResultSet rsDelAccount;
         String sAccount = "";
         try {
-            //TODO return false if account doesn't exist
-
             // Get Account name
             rsDelAccount = stmt.executeQuery("SELECT * FROM Account WHERE `account_name` = \"" + accountName + "\";");
             while (rsDelAccount.next()) {
@@ -228,6 +228,37 @@ public class DBQueries {
     public static boolean validateCurrentUser() {
 
         return true;
+    }
+    
+    /**
+     * Return admin status
+     * @return 
+     */
+    public static boolean bIsAdmin() {
+        
+        int iUserID = -1;
+        ResultSet rsIsAdmin;
+        boolean result = false;
+        
+        try {
+            // Get User ID to find correct table
+            rsIsAdmin = stmt.executeQuery("SELECT * FROM User WHERE `program_username` = \"" + sName + "\";");
+            while (rsIsAdmin.next()) {
+                iUserID = rsIsAdmin.getInt("idUser");
+            }
+            String sql = "SELECT `user_admin` FROM `User` WHERE `User_idUser` = \"" + iUserID + "\";";
+            rsIsAdmin = stmt.executeQuery(sql);
+            while (rsIsAdmin.next()) {
+                result = rsIsAdmin.getBoolean("user_admin");
+            }
+            
+            
+        } catch (SQLException sqle) {
+            System.out.println("Could not add settings: " + sqle);
+            return false;
+        }
+        
+        return result;
     }
     
     public void saveSettings() {

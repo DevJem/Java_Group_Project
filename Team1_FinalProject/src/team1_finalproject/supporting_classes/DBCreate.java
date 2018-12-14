@@ -83,6 +83,38 @@ public class DBCreate {
         
         return true;
     }
+    
+    boolean addSettings(String sName) {
+        int iUserID = -1;
+        ResultSet rsCreateSettings;
+        
+        try {
+            // Get User ID
+            rsCreateSettings = stmt.executeQuery("SELECT * FROM User WHERE `program_username` = \"" + sName + "\";");
+            while (rsCreateSettings.next()) {
+                iUserID = rsCreateSettings.getInt("idUser");
+            }
+            
+            String sql = "INSERT INTO `" + sName + "`.`Settings`\n" +
+            "(`password_update_notifications`,\n" +
+            "`user_admin`,\n" +
+            "`user_can_modify_settings`,\n" +
+            "`User_idUser`)\n" +
+            "VALUES\n" +
+            "(0,\n" +
+            "1,\n" +
+            "1,\n" +
+            iUserID + ");";
+            
+            System.out.println("user id is " + iUserID);
+            
+            stmt.executeUpdate(sql);
+        } catch (SQLException sqle) {
+            System.out.println("Could not add settings: " + sqle);
+            return false;
+        }
+        return true;
+    }
 } // End Subclass DBCreate
 
 /*

@@ -21,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import team1_finalproject.supporting_classes.DBQueries;
 
 
 public class SettingsController implements Initializable {
@@ -59,7 +60,8 @@ public class SettingsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        String sAdmin = DBQueries.bIsAdmin() ? "Administrator" : "Local User";
+        tfUserStatus.setText(sAdmin);
     }    
     
     //Handle Button Click: Exists out of Settings popup
