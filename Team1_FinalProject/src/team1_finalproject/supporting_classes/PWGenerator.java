@@ -60,7 +60,7 @@ public class PWGenerator {
                 break;
             }
         }
-        System.out.println("Generated password is: " + sResult);
+//        System.out.println("Generated password is: " + sResult);
         return sResult;
     }
     
@@ -98,7 +98,7 @@ public class PWGenerator {
                     break;
             }
             if (!bContainsUpcase) {
-                System.out.println("Does not contain required complexity.");
+//                System.out.println("Does not contain required complexity.");
                 return false;                
             }
         }
@@ -115,7 +115,7 @@ public class PWGenerator {
                     break;
             }
             if (!bConctainsLowcase) {
-                System.out.println("Does not contain required complexity.");
+//                System.out.println("Does not contain required complexity.");
                 return false;                
             }
         }
@@ -132,7 +132,7 @@ public class PWGenerator {
                     break;
             }
             if (!bContainsSpecial) {
-                System.out.println("Does not contain required complexity.");
+//                System.out.println("Does not contain required complexity.");
                 return false;                
             }
         }
@@ -149,11 +149,11 @@ public class PWGenerator {
                     break;
             }
             if (!bContainsNumber) {
-                System.out.println("Does not contain required complexity.");
+//                System.out.println("Does not contain required complexity.");
                 return false;                
             }
         }
-        System.out.println("Contains required complexity.");
+//        System.out.println("Contains required complexity.");
         return true;
     }
 

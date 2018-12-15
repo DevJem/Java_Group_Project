@@ -70,6 +70,12 @@ public class DBCreate {
         return true;
     }
 
+    /**
+     * Add user to table
+     * @param sName
+     * @param sPassword
+     * @return 
+     */
     boolean addUser(String sName, String sPassword) {
         String sql = "INSERT INTO `" + sName + "`.`User` (`program_username`, "
                 + "`program_password`, `administrator`) VALUES "
@@ -80,10 +86,14 @@ public class DBCreate {
             System.out.println("Failed to create user.\n" + e);
             return false;
         }
-        
         return true;
     }
     
+    /**
+     * connect settings to database
+     * @param sName
+     * @return 
+     */
     boolean addSettings(String sName) {
         int iUserID = -1;
         ResultSet rsCreateSettings;
@@ -106,9 +116,10 @@ public class DBCreate {
             "1,\n" +
             iUserID + ");";
             
-            System.out.println("user id is " + iUserID);
+//            System.out.println("user id is " + iUserID);
             
             stmt.executeUpdate(sql);
+            
         } catch (SQLException sqle) {
             System.out.println("Could not add settings: " + sqle);
             return false;

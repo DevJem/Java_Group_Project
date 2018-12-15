@@ -21,13 +21,14 @@ public class DBQueries {
     private static Statement stmt;
     private static String sRequiredPassword;
     private static String sName = null;
+    private static boolean recieveEmails = true;
 
     public DBQueries(Connection conn) throws SQLException {
         stmt = conn.createStatement();
     }
 
     public static boolean checkPW(String enteredPW) {
-        System.out.println("entered pw: " + enteredPW + " actual pw: " + sRequiredPassword);
+//        System.out.println("entered pw: " + enteredPW + " actual pw: " + sRequiredPassword);
         return enteredPW.equals(sRequiredPassword);
     }
 
@@ -50,7 +51,7 @@ public class DBQueries {
         }
 
         sRequiredPassword = sPassword;      // For pw validation
-        return "Name is: " + sName + " and password is " + sPassword + "\n";  // TODO turn this off before deployment!!!
+        return "Name is: " + sName;  // + " and password is " + sPassword + "\n"; 
     }
 
     /**
@@ -242,14 +243,14 @@ public class DBQueries {
         
         try {
             // Get User ID to find correct table
-            rsIsAdmin = stmt.executeQuery("SELECT * FROM User WHERE `program_username` = \"" + sName + "\";");
+            rsIsAdmin = stmt.executeQuery("SELECT * FROM User WHERE `program_username` = '" + sName + "';");
             while (rsIsAdmin.next()) {
                 iUserID = rsIsAdmin.getInt("idUser");
             }
-            String sql = "SELECT `user_admin` FROM `User` WHERE `User_idUser` = \"" + iUserID + "\";";
+            String sql = "SELECT `administrator` FROM `User` WHERE `idUser` = \"" + iUserID + "\";";
             rsIsAdmin = stmt.executeQuery(sql);
             while (rsIsAdmin.next()) {
-                result = rsIsAdmin.getBoolean("user_admin");
+                result = rsIsAdmin.getBoolean("administrator");
             }
             
             
@@ -261,9 +262,27 @@ public class DBQueries {
         return result;
     }
     
-    public void saveSettings() {
-        
+    public static void setRecieveEmails(String sEmails) {
+        int iUserID = -1;
+        ResultSet rsSettings;
+        int emails = (sEmails.equals("Yes")) ? 1 : 0;
+        try {
+            // Get User ID to find correct table
+            rsSettings = stmt.executeQuery("SELECT * FROM User WHERE `program_username` = '" + sName + "';");
+            while (rsSettings.next()) {
+                iUserID = rsSettings.getInt("idUser");
+            }
+            
+            String sql = "UPDATE Settings SET `password_update_notifications` = " + emails + " WHERE `User_idUser` = \"" + iUserID + "\";";
+            stmt.executeUpdate(sql);
+            
+        } catch (SQLException sqle) {
+            System.out.println("Could not add settings: " + sqle);
+//            return false;
+        }
     }
+    
+    
 }
 
 

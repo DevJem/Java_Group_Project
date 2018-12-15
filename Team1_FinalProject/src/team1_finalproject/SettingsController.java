@@ -38,6 +38,7 @@ public class SettingsController implements Initializable {
         //Add items to Choice box
         choicebNotifyEmail.getItems().clear();
         choicebNotifyEmail.getItems().addAll("Yes", "No");
+        choicebNotifyEmail.setValue("Yes");
         
         String sAdmin = DBQueries.bIsAdmin() ? "Administrator" : "Local User";
         tfUserStatus.setText(sAdmin);
@@ -46,19 +47,13 @@ public class SettingsController implements Initializable {
     //TODO: Save Setting config to database
     @FXML
     public void saveButton(ActionEvent event) throws Exception {
-        
+        DBQueries.setRecieveEmails(getChoice(choicebNotifyEmail));
     }
     
     @FXML
-    public void getChoice(ChoiceBox<String> cb) {
-        choice = choicebNotifyEmail.getValue();
-        
-        //TODO: ?? can choose to return the bool return value
-//        if(choice.equals("Yes")){
-//            return true;
-//        } else {
-//            return false;
-//        }
+    public String getChoice(ChoiceBox<String> cb) {
+        return choicebNotifyEmail.getValue();
+//        System.out.println(choice);
     }
 
     /**
