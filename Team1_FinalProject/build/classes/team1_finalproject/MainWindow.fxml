@@ -10,6 +10,7 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -45,6 +46,22 @@
                 <MenuItem fx:id="miSaveAs" mnemonicParsing="false" text="Save As..." />
                 <MenuItem fx:id="miSettings" mnemonicParsing="false" onAction="#Settings" text="Settings" />
                 <MenuItem fx:id="miExit" mnemonicParsing="false" onAction="#ExitProgram" text="Exit" />
+              </items>
+            </Menu>
+            <Menu fx:id="miEdit" mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem fx:id="miCut" mnemonicParsing="false" onAction="#cut" text="Cut">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                <MenuItem fx:id="miCopy" mnemonicParsing="false" onAction="#copy" text="Copy">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                <MenuItem fx:id="miPaste" mnemonicParsing="false" onAction="#paste" text="Paste">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
               </items>
             </Menu>
             <Menu fx:id="Help" mnemonicParsing="false" text="Help">

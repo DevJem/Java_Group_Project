@@ -16,6 +16,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import team1_finalproject.supporting_classes.DBQueries;
@@ -31,6 +32,8 @@ public class EditAccountController implements Initializable {
     private PasswordField tfEditAccountPassword;
     @FXML
     private TextArea taEditAccountNotes;
+    @FXML
+    private Text errorMsg;
 
     /**
      * Method: Initializer
@@ -41,16 +44,27 @@ public class EditAccountController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        errorMsg.setVisible(false);
     }
 
     @FXML
     public void UpdateAccount(ActionEvent event) throws Exception {
+        if (tfEditAccountName.getText().equals("")) {
+            errorMsg.setText("Error: Account Name cannnot be empty");
+            errorMsg.setVisible(true);
+            return;
+        }
         if (DBQueries.editAccount(tfEditAccountName.getText(), tfEditAccountID.getText(),
                 tfEditAccountPassword.getText(), taEditAccountNotes.getText())) {
-            //TODO: Inform success
+            errorMsg.setVisible(false);
         } else {
-            //TODO: Inform the user that the Edit account failed.
+            errorMsg.setText("Error while editing account");
+            errorMsg.setVisible(true);
         }
+        tfEditAccountName.clear();
+        tfEditAccountID.clear();
+        tfEditAccountPassword.clear();
+        taEditAccountNotes.clear();
     }
 
     /**
@@ -69,7 +83,7 @@ public class EditAccountController implements Initializable {
         stage.setScene(sceneBP);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
-        
+
         //set generated password string
         String pw = Clipboard.getSystemClipboard().getString();
         tfEditAccountPassword.setText(pw);

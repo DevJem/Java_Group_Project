@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.Clipboard;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import team1_finalproject.supporting_classes.DBQueries;
@@ -33,12 +34,15 @@ public class AddAccountController implements Initializable {
     private PasswordField tfAccountPassword;
     @FXML
     private TextArea taAccountNotes;
-
+    @FXML
+    private Text errorMsg;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        errorMsg.setVisible(false);
     }
     
     
@@ -73,13 +77,25 @@ public class AddAccountController implements Initializable {
     @FXML
     public void AddAccountButton(ActionEvent event) throws SQLException {
         
+        //Error: if Account Name is blank 
+        if(tfAccountName.getText().equals("")){
+            errorMsg.setText("Error: Account Name cannnot be empty");
+            errorMsg.setVisible(true);
+            return;
+        }
         if (DBQueries.addAccount(tfAccountName.getText(), tfAccountUserID.getText(),
                 tfAccountPassword.getText(), taAccountNotes.getText())) {
-            //TODO: print success
+            errorMsg.setVisible(false);
             
         } else {
-            //TODO: Inform the user that the add account failed.
+            errorMsg.setText("Error while adding account");
+            errorMsg.setVisible(true);
         }
+        
+        tfAccountName.clear();
+        tfAccountUserID.clear();
+        tfAccountPassword.clear();
+        taAccountNotes.clear();
     }
 
     /**
