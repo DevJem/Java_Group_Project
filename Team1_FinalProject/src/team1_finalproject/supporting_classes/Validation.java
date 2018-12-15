@@ -22,13 +22,8 @@ public class Validation {
      * @return 
      */
     
-    public static boolean validEmail(TextField email, Text msg) {
-        if (!email.getText().matches("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+")) {
-            msg.setText("Invalid Email: Please try again.");
-            return false;
-        } else {
-            return true;
-        }
+    public static boolean validEmail(TextField email) {
+        return email.getText().matches("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
     }
 
     /**

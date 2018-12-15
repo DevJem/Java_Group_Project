@@ -56,7 +56,7 @@ public class SignInController implements Initializable {
         }
         
         //#2 Check if valid email & password
-        if (Validation.validEmail(tfUserEmail, txtSignInErrorMsg) && 
+        if (Validation.validEmail(tfUserEmail) && 
                 Validation.validPassword(tfUserPassword, txtSignInErrorMsg)) {
 
             // Connect to the database & send tfUserEmail to DBInterface
