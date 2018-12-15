@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/supporting_classes/DBInterface.java</file>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/supporting_classes/Validation.java</file>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/supporting_classes/DBFileOperations.java</file>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/CreateAccountController.java</file>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/supporting_classes/DBQueries.java</file>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/SettingsController.java</file>
-            <file>file:/media/dithanial/HDD/Education/Champlain/Java%203%20-%20Enterprise%20Java/repo/Team1_FinalProject/src/team1_finalproject/supporting_classes/DBCreate.java</file>
+            <file>file:/media/dithanial/HDD/netbeans-projects/champlain/Team1_FinalProject/Team1_FinalProject/src/team1_finalproject/supporting_classes/DBQueries.java</file>
+            <file>file:/media/dithanial/HDD/netbeans-projects/champlain/Team1_FinalProject/Team1_FinalProject/src/team1_finalproject/supporting_classes/DBCreate.java</file>
+            <file>file:/media/dithanial/HDD/netbeans-projects/champlain/Team1_FinalProject/Team1_FinalProject/src/team1_finalproject/supporting_classes/DBFileOperations.java</file>
+            <file>file:/media/dithanial/HDD/netbeans-projects/champlain/Team1_FinalProject/Team1_FinalProject/src/team1_finalproject/supporting_classes/DBInterface.java</file>
+            <file>file:/media/dithanial/HDD/netbeans-projects/champlain/Team1_FinalProject/Team1_FinalProject/src/team1_finalproject/SettingsController.java</file>
         </group>
     </open-files>
 </project-private>
