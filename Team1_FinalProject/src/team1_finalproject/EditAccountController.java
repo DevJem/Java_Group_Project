@@ -56,13 +56,15 @@ public class EditAccountController implements Initializable {
         }
         if (DBQueries.editAccount(tfEditAccountName.getText(), tfEditAccountID.getText(),
                 tfEditAccountPassword.getText(), taEditAccountNotes.getText())) {
-            //TODO: Inform success
             errorMsg.setVisible(false);
         } else {
-            //TODO: Inform the user that the Edit account failed.
             errorMsg.setText("Error while editing account");
             errorMsg.setVisible(true);
         }
+        tfEditAccountName.clear();
+        tfEditAccountID.clear();
+        tfEditAccountPassword.clear();
+        taEditAccountNotes.clear();
     }
 
     /**

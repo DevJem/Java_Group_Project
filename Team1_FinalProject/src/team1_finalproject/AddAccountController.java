@@ -91,6 +91,11 @@ public class AddAccountController implements Initializable {
             errorMsg.setText("Error while adding account");
             errorMsg.setVisible(true);
         }
+        
+        tfAccountName.clear();
+        tfAccountUserID.clear();
+        tfAccountPassword.clear();
+        taAccountNotes.clear();
     }
 
     /**

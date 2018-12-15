@@ -61,6 +61,7 @@ public class DeleteAccountController implements Initializable {
             txtDeleteNotice.setText(sName + " does not exist;");
             txtDeleteNotice.setVisible(true);
         }
+        tfDeleteAccountName.clear();
     }
 
     /**

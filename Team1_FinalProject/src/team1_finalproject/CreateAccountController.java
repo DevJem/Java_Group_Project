@@ -54,8 +54,7 @@ public class CreateAccountController implements Initializable {
      */
     @FXML
     public void CreateAccount(ActionEvent event) throws Exception {
-        // Connect to the database
-        DBInterface db = new DBInterface();
+
 
         //#1 Check if text fields are empty
         if (tfNewUserEmail.getText().equals("") || tfNewUserPassword.getText().equals("")
@@ -67,7 +66,8 @@ public class CreateAccountController implements Initializable {
         //#2 Check if email is valid & password length
         if (Validation.validEmail(tfNewUserEmail)
                 && Validation.validPasswords(tfNewUserPassword, tfNewUserPassword2)) {
-            // send tfUserEmail to DBInterface
+            // Connect to the database & send tfUserEmail to DBInterface        
+            DBInterface db = new DBInterface();
             DBInterface.setName(tfNewUserEmail.getText());
             DBInterface.setPassword(tfNewUserPassword.getText());
             if (!db.createDB()) {
