@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane id="" focusTraversable="true" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team1_finalproject.SignInController">
+<BorderPane id="" focusTraversable="true" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team1_finalproject.SignInController">
   <center>
     <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
       <children>
@@ -17,7 +20,7 @@
             <Insets bottom="5.0" left="20.0" right="20.0" top="20.0" />
           </VBox.margin>
         </TextField>
-        <Text fx:id="txtSignInErrorMsg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Email or Password is incorrect." visible="true">
+        <Text fx:id="txtSignInErrorMsg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Email or Password is incorrect." visible="true" wrappingWidth="291.43896484375">
           <font>
             <Font name="SansSerif Regular" size="13.0" />
           </font>

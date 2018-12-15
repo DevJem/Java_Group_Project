@@ -49,7 +49,7 @@
                 <Insets bottom="10.0" left="9.0" right="31.0" top="25.0" />
               </HBox.margin>
             </Label>
-                  <TextField fx:id="tfUserStatus" editable="false" prefHeight="27.0" prefWidth="199.0">
+                  <TextField fx:id="tfUserStatus" editable="false" focusTraversable="false" prefHeight="27.0" prefWidth="199.0">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
                      </HBox.margin>

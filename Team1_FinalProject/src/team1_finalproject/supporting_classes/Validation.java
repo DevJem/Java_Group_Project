@@ -40,7 +40,7 @@ public class Validation {
      */
     public static boolean validPasswords(PasswordField pw, PasswordField pw2, Text msg) {
         if (pw.getLength() < 6 || pw2.getLength() < 6) {
-            msg.setText("Invalid Password: must be 6 characters minimum");
+            msg.setText("Invalid Password: min. 6 characters");
             return false;
         } 
         if (!pw.getText().equals(pw2.getText())) {
@@ -58,7 +58,7 @@ public class Validation {
      */
     public static boolean validPassword(PasswordField pw, Text msg) {
         if (pw.getLength() < 6) {
-            msg.setText("Invalid Password: must be 6 characters minimum");
+            msg.setText("Invalid Password: min. 6 characters");
             return false;
         } else {
             return true;

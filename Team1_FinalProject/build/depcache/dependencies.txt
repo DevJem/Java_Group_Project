@@ -8,8 +8,8 @@ javafx.scene.Node
 java.io.PrintStream
 team1_finalproject.supporting_classes.DBInterface
 javafx.event.ActionEvent
-javafx.scene.text.Text
 javafx.fxml.FXMLLoader
+javafx.scene.text.Text
 team1_finalproject.supporting_classes.DBQueries
 javafx.scene.control.PasswordField
 java.lang.Exception
@@ -17,6 +17,7 @@ javafx.scene.Parent
 java.lang.Object
 javafx.stage.Stage
 javafx.scene.Scene
+team1_finalproject.supporting_classes.Validation
 java.lang.String
 ||:team1_finalproject.supporting_classes.PWGenerator
 java.lang.Object

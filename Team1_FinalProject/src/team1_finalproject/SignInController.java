@@ -51,7 +51,7 @@ public class SignInController implements Initializable {
 
         //#1 If Email or Password is missing throw error
         if (tfUserEmail.getText().equals("") || tfUserPassword.getText().equals("")) {
-            errorMessage("Invalid entry: textfields cannot be empty");
+            errorMessage("Invalid Entry: text fields cannot be empty");
             return;
         }
         
@@ -66,7 +66,7 @@ public class SignInController implements Initializable {
             DBInterface.setPassword(tfUserPassword.getText());
             if (!db.connect()) {
                 System.out.println("Database does not exist.");
-                errorMessage("Database does not exist.");
+                errorMessage("User Account does not exist.");
                 DBInterface.disconnect();
                 return;
             }
@@ -75,7 +75,7 @@ public class SignInController implements Initializable {
             if (!DBQueries.checkPW(tfUserPassword.getText())) {
                 System.out.println("Password incorrect");
                 DBInterface.disconnect();
-                errorMessage("Password incorrect");
+                errorMessage("Incorrect Password");
                 DBInterface.disconnect();
                 tfUserPassword.clear();
                 return;
