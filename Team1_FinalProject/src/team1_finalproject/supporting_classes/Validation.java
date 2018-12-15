@@ -16,44 +16,48 @@ import javafx.scene.text.Text;
 public class Validation {
 
     /**
-     * Method: Checks if email is valid 
+     * Method: Checks if email is valid
+     *
      * @param email
      * @param msg
-     * @return 
+     * @return
      */
-    
     public static boolean validEmail(TextField email) {
         return email.getText().matches("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
     }
 
     /**
      * Method: Checks password length & if passwords match
+     *
      * @param pw
      * @param pw2
      * @param msg
-     * @return 
+     * @return
      */
-    public static boolean validPasswords(PasswordField pw, PasswordField pw2, Text msg) {
-        if (pw.getLength() < 6 || pw2.getLength() < 6) {
-            msg.setText("Invalid Password: min. 6 characters");
+    public static boolean validPasswords(PasswordField pw, PasswordField pw2) {
+        if (pw.getLength() < 6) {
             return false;
-        } 
+        }
+        if (pw2.getLength() < 6) {
+            return false;
+        }
         if (!pw.getText().equals(pw2.getText())) {
-            msg.setText("Invalid Password: passwords do not match");
             return false;
         }
         return true;
     }
-    
+
     /**
      * Method: Check password length
+     *
      * @param pw
      * @param msg
-     * @return 
+     * @return
      */
     public static boolean validPassword(PasswordField pw, Text msg) {
         if (pw.getLength() < 6) {
             msg.setText("Invalid Password: min. 6 characters");
+            msg.setVisible(true);
             return false;
         } else {
             return true;

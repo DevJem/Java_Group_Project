@@ -66,7 +66,7 @@ public class CreateAccountController implements Initializable {
 
         //#2 Check if email is valid & password length
         if (Validation.validEmail(tfNewUserEmail)
-                && Validation.validPasswords(tfNewUserPassword, tfNewUserPassword2, txtErrorMsg)) {
+                && Validation.validPasswords(tfNewUserPassword, tfNewUserPassword2)) {
             // send tfUserEmail to DBInterface
             DBInterface.setName(tfNewUserEmail.getText());
             DBInterface.setPassword(tfNewUserPassword.getText());
@@ -83,7 +83,7 @@ public class CreateAccountController implements Initializable {
             wSignIn.setScene(sceneBP);
             wSignIn.show();
         } else {
-            errorMessage("Invalid Email: Please try again.");
+            errorMessage("Invalid Email or Password: Please try again.");
         }
     }
 
